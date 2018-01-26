@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'net/http'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,5 +15,9 @@ module Mypipefy
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    if (envfile = Rails.root.join('.env')) && File.exists?(envfile)
+      Dotenv.overload(envfile)
+    end
   end
 end
