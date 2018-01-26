@@ -16,7 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc',          group: :doc
 gem 'puma'
-gem 'binding_of_caller'
+#gem 'binding_of_caller'
 gem 'dotenv-rails'
 gem 'rest-client'
 
