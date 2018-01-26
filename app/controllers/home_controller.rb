@@ -5,8 +5,9 @@ class HomeController < ApplicationController
   end
 
   def fetch_new_data
-    organizations = PipefyService.new.fetch_organizations(ids: [92858])
-    #OrganizationSevice.new.save(organizations)
+    organizations = PipefyService.new.fetch_organizations(ids: [92_858])
+    # OrganizationSevice.new.save(organizations)
+    puts organizations
     redirect_to home_index_url
   end
 end

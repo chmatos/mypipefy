@@ -1,5 +1,6 @@
-class PipefyService
+# frozen_string_literal: true
 
+class PipefyService
   def initialize
     @url = ENV['PIPEFY_URL']
     @headers = {
@@ -57,7 +58,7 @@ class PipefyService
         }'
     }"
 
-    values = values.gsub("\n", ' ').squeeze(' ').gsub('\'','"')
+    values = values.tr("\n", ' ').squeeze(' ').tr('\'', '"')
     RestClient.post("#{@url}/queries", values, @headers)
   end
 end
