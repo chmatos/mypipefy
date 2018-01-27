@@ -59,6 +59,8 @@ class PipefyService
     }"
 
     values = values.tr("\n", ' ').squeeze(' ').tr('\'', '"')
-    RestClient.post("#{@url}/queries", values, @headers)
+    response = RestClient.post("#{@url}/queries", values, @headers)
+    response = JSON.parse(response.body)
+    response['data']['organizations']
   end
 end
