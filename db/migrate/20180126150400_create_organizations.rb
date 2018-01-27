@@ -4,6 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.1]
       t.integer :id, primary_key: true
       t.string :name
       t.datetime :created_at
+      t.jsonb :pipes
     end
   end
 end
