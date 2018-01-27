@@ -10,7 +10,7 @@ class PipefyService
   end
 
   def fetch_organizations(ids: nil)
-    response = RestClient.post("#{@url}/queries", query_organizarions(ids: ids), @headers)
+    response = RestClient.post("#{@url}/queries", query_organizations(ids: ids), @headers)
     response = JSON.parse(response.body)
     response['data']['organizations']
   rescue StandardError
@@ -40,11 +40,28 @@ class PipefyService
     phases.each do |phase|
       pha = Phase.find_or_create_by(id: phase['id'])
       pha.update(name: phase['name'], pipe_id: pipe_id)
-      #store_phases(pipe['phases'])
+      store_cards(phase_id: pha.id, cards: phase['cards'])
     end
   end
 
-  def query_organizarions(ids: nil)
+  def store_cards(phase_id:, cards: nil)
+    return if cards.blank? || phase_id.blank?
+    cards['edges'].each do |edge|
+      node = edge['node']
+      car = Card.find_or_create_by(id: node['id'])
+      puts node
+      puts node['createdAt']
+      car.update(
+        title: node['title'],
+        created_at: node['createdAt'],
+        due_date: node['due_date'],
+        phase_id: node['current_phase']['id']
+      )
+      # store_field(phase_id: phase_id, card_id: car.id, fields: node['fields'])
+    end
+  end
+
+  def query_organizations(ids: nil)
     select_ids = ids.present? ? "(ids: #{ids})" : nil
     query = "{
         'query': '{
@@ -52,7 +69,6 @@ class PipefyService
           {
             id
             name
-            created_at
             pipes
             {
               id
