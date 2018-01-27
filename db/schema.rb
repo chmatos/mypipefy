@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20180126150400) do
   create_table "organizations", id: :integer, default: nil, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
-    t.jsonb "pipes"
   end
 
 end
