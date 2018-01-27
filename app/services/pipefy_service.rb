@@ -10,9 +10,23 @@ class PipefyService
   end
 
   def fetch_organizations(ids: nil)
-    select_ids = ids.present? ? "(ids: #{ids})" : nil
+    response = RestClient.post("#{@url}/queries", query_organizarions(ids: ids), @headers)
+    response = JSON.parse(response.body)
+    response['data']['organizations']
+  rescue StandardError
+    nil
+  end
 
-    values = "{
+  def store(organizations: nil)
+    return if organizations.blank?
+    organizations.each do |organization|
+      Organization.store(organization: organization)
+    end
+  end
+
+  def query_organizarions(ids: nil)
+    select_ids = ids.present? ? "(ids: #{ids})" : nil
+    query = "{
         'query': '{
           organizations #{select_ids}
           {
@@ -57,8 +71,6 @@ class PipefyService
           }
         }'
     }"
-
-    values = values.tr("\n", ' ').squeeze(' ').tr('\'', '"')
-    RestClient.post("#{@url}/queries", values, @headers)
+    query.tr("\n", ' ').squeeze(' ').tr('\'', '"')
   end
 end
