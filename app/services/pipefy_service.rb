@@ -21,7 +21,7 @@ class PipefyService
     return if organizations.blank?
     organizations.each do |organization|
       org = Organization.find_or_create_by(id: organization['id'])
-      org.update(id: organization['id'], name: organization['name'], created_at: organization['created_at'])
+      org.update(name: organization['name'], created_at: organization['created_at'])
       store_pipes(organization_id: org.id, pipes: organization['pipes'])
     end
   end
@@ -30,7 +30,16 @@ class PipefyService
     return if pipes.blank? || organization_id.blank?
     pipes.each do |pipe|
       pip = Pipe.find_or_create_by(id: pipe['id'])
-      pip.update(id: pipe['id'], name: pipe['name'], organization_id: organization_id)
+      pip.update(name: pipe['name'], organization_id: organization_id)
+      store_phases(pipe_id: pip.id, phases: pipe['phases'])
+    end
+  end
+
+  def store_phases(pipe_id:, phases: nil)
+    return if phases.blank? || pipe_id.blank?
+    phases.each do |phase|
+      pha = Phase.find_or_create_by(id: phase['id'])
+      pha.update(name: phase['name'], pipe_id: pipe_id)
       #store_phases(pipe['phases'])
     end
   end
