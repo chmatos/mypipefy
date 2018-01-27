@@ -20,7 +20,18 @@ class PipefyService
   def store(organizations: nil)
     return if organizations.blank?
     organizations.each do |organization|
-      Organization.store(organization: organization)
+      org = Organization.find_or_create_by(id: organization['id'])
+      org.update(id: organization['id'], name: organization['name'], created_at: organization['created_at'])
+      store_pipes(organization_id: org.id, pipes: organization['pipes'])
+    end
+  end
+
+  def store_pipes(organization_id:, pipes: nil)
+    return if pipes.blank? || organization_id.blank?
+    pipes.each do |pipe|
+      pip = Pipe.find_or_create_by(id: pipe['id'])
+      pip.update(id: pipe['id'], name: pipe['name'], organization_id: organization_id)
+      #store_phases(pipe['phases'])
     end
   end
 

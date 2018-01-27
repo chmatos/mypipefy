@@ -8,7 +8,6 @@ end
 ruby '2.4.1'
 gem 'rails'
 gem 'pg', '~> 0.18'
-gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
