@@ -31,33 +31,42 @@ class PipefyService
     pipes.each do |pipe|
       pip = Pipe.find_or_create_by(id: pipe['id'])
       pip.update(name: pipe['name'], organization_id: organization_id)
-      store_phases(pipe_id: pip.id, phases: pipe['phases'])
+      store_phases(phases: pipe['phases'], pipe_id: pip.id)
     end
   end
 
-  def store_phases(pipe_id:, phases: nil)
+  def store_phases(phases: nil, pipe_id:)
     return if phases.blank? || pipe_id.blank?
     phases.each do |phase|
       pha = Phase.find_or_create_by(id: phase['id'])
       pha.update(name: phase['name'], pipe_id: pipe_id)
-      store_cards(phase_id: pha.id, cards: phase['cards'])
+      store_fields(fields: phase['fields'], phase_id: pha.id, card_id: nil)
+      store_cards(cards: phase['cards'], phase_id: pha.id)
     end
   end
 
-  def store_cards(phase_id:, cards: nil)
+  def store_fields(fields: nil, phase_id: nil, card_id: nil)
+    return if fields.blank? || phase_id.blank?
+    fields.each do |field|
+      key = card_id.present? ? field['field']['id'] : field['id']
+      fie = Field.find_or_create_by(key: key, phase_id: phase_id)
+      fie.update(name: field['name'] || field['label'], card_id: card_id) if card_id.blank? || fie.card_id == card_id
+      # store_value(field['value'], phase_id, card_id) if card_id.present?
+    end
+  end
+
+  def store_cards(cards: nil, phase_id:)
     return if cards.blank? || phase_id.blank?
     cards['edges'].each do |edge|
       node = edge['node']
       car = Card.find_or_create_by(id: node['id'])
-      puts node
-      puts node['createdAt']
       car.update(
         title: node['title'],
         created_at: node['createdAt'],
         due_date: node['due_date'],
         phase_id: node['current_phase']['id']
       )
-      # store_field(phase_id: phase_id, card_id: car.id, fields: node['fields'])
+      store_fields(fields: node['fields'], phase_id: phase_id, card_id: node['id'])
     end
   end
 
