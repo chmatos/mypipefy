@@ -46,12 +46,12 @@ class PipefyService
   end
 
   def store_fields(fields: nil, phase_id: nil, card_id: nil)
-    #binding.pry
     return if fields.blank? || phase_id.blank?
     fields.each do |field|
-      fie = Field.find_or_create_by(id: field['id'], phase_id: phase_id)
+      key = card_id.present? ? field['field']['id'] : field['id']
+      fie = Field.find_or_create_by(key: key, phase_id: phase_id)
       fie.update(name: field['name'] || field['label'], card_id: card_id) if card_id.blank? || fie.card_id == card_id
-      #store_value(field['value'], phase_id, card_id) if card_id.present?
+      # store_value(field['value'], phase_id, card_id) if card_id.present?
     end
   end
 
@@ -66,6 +66,7 @@ class PipefyService
         due_date: node['due_date'],
         phase_id: node['current_phase']['id']
       )
+      store_fields(fields: node['fields'], phase_id: phase_id, card_id: node['id'])
     end
   end
 

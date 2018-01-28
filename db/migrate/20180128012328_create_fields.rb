@@ -1,10 +1,11 @@
 class CreateFields < ActiveRecord::Migration[5.1]
   def change
-    create_table :fields, id: false do |t|
-      t.string :id, primary_key: true
-      t.integer :phase_id, null: true
-      t.integer :card_id, null: true
+    create_table :fields do |t|
+      t.string :key
+      t.references :phase, null: true
+      t.references :card, null: true
       t.string :name
     end
+    add_index :fields, [:key, :phase_id], unique: true
   end
 end

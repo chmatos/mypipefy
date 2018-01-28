@@ -23,10 +23,14 @@ ActiveRecord::Schema.define(version: 20180128012328) do
     t.index ["phase_id"], name: "index_cards_on_phase_id"
   end
 
-  create_table "fields", id: :string, force: :cascade do |t|
-    t.integer "phase_id"
-    t.integer "card_id"
+  create_table "fields", force: :cascade do |t|
+    t.string "key"
+    t.bigint "phase_id"
+    t.bigint "card_id"
     t.string "name"
+    t.index ["card_id"], name: "index_fields_on_card_id"
+    t.index ["key", "phase_id"], name: "index_fields_on_key_and_phase_id", unique: true
+    t.index ["phase_id"], name: "index_fields_on_phase_id"
   end
 
   create_table "organizations", id: :integer, default: nil, force: :cascade do |t|
