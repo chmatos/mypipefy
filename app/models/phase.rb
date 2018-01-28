@@ -3,4 +3,5 @@
 class Phase < ApplicationRecord
   belongs_to :pipe
   has_many :cards
+  has_many :fields
 end

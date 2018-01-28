@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127222635) do
+ActiveRecord::Schema.define(version: 20180128012328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20180127222635) do
     t.datetime "due_date"
     t.bigint "phase_id"
     t.index ["phase_id"], name: "index_cards_on_phase_id"
+  end
+
+  create_table "fields", id: :string, force: :cascade do |t|
+    t.integer "phase_id"
+    t.integer "card_id"
+    t.string "name"
   end
 
   create_table "organizations", id: :integer, default: nil, force: :cascade do |t|
