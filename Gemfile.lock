@@ -133,6 +133,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-helper (0.1.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails_12factor (0.0.3)
@@ -230,6 +231,7 @@ DEPENDENCIES
   pry-byebug
   puma
   rails
+  rails-helper
   rails_12factor
   rest-client
   rspec-rails
@@ -244,4 +246,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.4
+   1.16.1

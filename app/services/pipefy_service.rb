@@ -10,6 +10,7 @@ class PipefyService
   end
 
   def fetch_organizations(ids: nil)
+    return nil if ids.blank?
     response = RestClient.post("#{@url}/queries", query_organizations(ids: ids), @headers)
     response = JSON.parse(response.body)
     response['data']['organizations']
