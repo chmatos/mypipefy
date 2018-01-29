@@ -50,9 +50,15 @@ class PipefyService
     fields.each do |field|
       key = card_id.present? ? field['field']['id'] : field['id']
       fie = Field.find_or_create_by(key: key, phase_id: phase_id)
-      fie.update(name: field['name'] || field['label'], card_id: card_id) if card_id.blank? || fie.card_id == card_id
-      # store_value(field['value'], phase_id, card_id) if card_id.present?
+      fie.update(name: field['name'] || field['label'], card_id: card_id) if card_id.blank? || fie.card_id == card_id || fie.name.blank?
+      store_value(content: field['value'], key: key, phase_id: phase_id, card_id: card_id) if card_id.present?
     end
+  end
+
+  def store_value(content: nil, key: nil, phase_id: nil, card_id: nil)
+    return if content.blank? || key.blank? || phase_id.blank? || card_id.blank?
+    val = Value.find_or_create_by(key: key, phase_id: phase_id, card_id: card_id)
+    val.update(content: content)
   end
 
   def store_cards(cards: nil, phase_id:)
