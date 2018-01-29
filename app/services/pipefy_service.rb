@@ -36,7 +36,7 @@ class PipefyService
   end
 
   def store_phases(phases: nil, pipe_id:)
-    return if pipe_id.blank?
+    return if phases.blank? || pipe_id.blank?
     phases.each do |phase|
       pha = Phase.find_or_create_by(id: phase['id'])
       pha.update(name: phase['name'], pipe_id: pipe_id)
@@ -46,7 +46,7 @@ class PipefyService
   end
 
   def store_fields(fields: nil, phase_id: nil, card_id: nil)
-    return if phase_id.blank?
+    return if fields.blank? || phase_id.blank?
     fields.each do |field|
       key = card_id.present? ? field['field']['id'] : field['id']
       fie = Field.find_or_create_by(key: key, phase_id: phase_id)
