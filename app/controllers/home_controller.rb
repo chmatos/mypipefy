@@ -3,7 +3,6 @@
 class HomeController < ApplicationController
   def index
     @organization = Organization.first
-    #@pipes = @organization.pipes
   end
 
   def fetch_new_data
