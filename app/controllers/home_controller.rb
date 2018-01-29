@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @organization = Organization.first
+  end
 
   def fetch_new_data
     organizations = PipefyService.new.fetch_organizations(ids: [92_858])
