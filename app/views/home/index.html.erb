@@ -3,12 +3,12 @@
     <%= button_to "Fetch new data", fetch_new_data_path, method: :get %>
   </div>
 
-  <h1><%= @organization.name %></h1>
+  <h1><%= @organization&.name %></h1>
 
-  <% @pipes.each do |pipe| %>
+  <% @organization&.pipes&.each do |pipe| %>
     <% cards = pipe.cards.order(:id) %>
     <% phase_ids = cards.pluck(:phase_id).uniq %>
-    <% fields = Field.where(phase_id: phase_ids).order('id desc').pluck(:key, :name).uniq %>
+    <% fields = Field.where(phase_id: phase_ids).order('id desc').pluck(:key, :name).uniq if phase_ids.present? %>
 
     <h2><%= pipe.name %></h2>
 
@@ -18,19 +18,19 @@
         <th>Created at</th>
         <th>Current Phase</th>
         <th>Due Date</th>
-        <% fields.each do |key, name| %>
+        <% fields&.each do |key, name| %>
           <th><%= name %></th>
         <% end %>
       </tr>
 
-      <% cards.each do |card| %>
+      <% cards&.each do |card| %>
         <tr>
           <td><%= card.title %></td>
           <td><%= card.created_at&.strftime('%d/%m/%Y') %></td>
-          <td><%= card.phase.name %></td>
+          <td><%= card.phase&.name %></td>
           <td><%= card.due_date&.strftime('%d/%m/%Y') %></td>
 
-          <% fields.each do |key, name| %>
+          <% fields&.each do |key, name| %>
             <% value = Value.find_by(key: key, card_id: card.id) %>
             <td><%= value&.content %></td>
           <% end %>
