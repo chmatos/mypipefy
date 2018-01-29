@@ -1,2 +1,36 @@
-<h1>Começando os Trabalhos</h1>
-<%= link_to "Fetch new data", fetch_new_data_url %>
+<div>
+  <div class='top-right'>
+    <%= button_to "Fetch new data", fetch_new_data_path, method: :get %>
+  </div>
+
+  <h1><%= @organization.name %></h1>
+  <br>
+  <h2><%= @organization.pipes.first.name %></h2>
+  <br>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Current Phase</th>
+      <th>Due Date</th>
+      <% @fields.each do |key, name| %>
+        <th><%= name %></th>
+      <% end %>
+    </tr>
+
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.title %></td>
+        <td><%= card.created_at&.strftime('%d/%m/%Y') %></td>
+        <td><%= card.phase.name %></td>
+        <td><%= card.due_date&.strftime('%d/%m/%Y') %></td>
+
+        <% @fields.each do |key, name| %>
+          <% value = Value.find_by(key: key, card_id: card.id) %>
+          <td><%= value&.content %></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </table>
+</div>
