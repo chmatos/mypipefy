@@ -3,10 +3,10 @@
 class HomeController < ApplicationController
   def index
     @organization = Organization.find(92_858)
-    @pipe = @organization.pipes.first
-    @cards = @organization.cards.order(:id)
-    phase_ids = @cards.pluck(:phase_id).uniq
-    @fields = Field.where(phase_id: phase_ids).order('id desc').pluck(:key, :name).uniq
+    @pipes = @organization.pipes
+    #@cards = @organization.cards.order(:id)
+    #phase_ids = @cards.pluck(:phase_id).uniq
+    #@fields = Field.where(phase_id: phase_ids).order('id desc').pluck(:key, :name).uniq
     # @fields = Field.all.order('id desc').pluck(:key,:name).uniq
   end
 
