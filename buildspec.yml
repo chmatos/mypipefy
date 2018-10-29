@@ -22,7 +22,7 @@ phases:
       - aws configure set s3.signature_version s3v4
       - aws s3 sync s3://b2bstack-portal/ ~/.ssh/ --region us-east-1 && chmod 400 ~/.ssh/id_rsa
       - apt-get update && apt-get install openssh-client -y
-      - git clone -b $BRANCH git@github.com:b2bstack/portal.git /b2bstack
+      - git clone -b $BRANCH https://git-codecommit.us-east-1.amazonaws.com/v1/repos/portal /b2bstack
       - cd /b2bstack
       - echo Build started on `date`
       - echo Building the Docker image...          
