@@ -1,0 +1,31 @@
+default: &default
+  adapter: mysql2
+  encoding: latin1
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  host: <%= ENV['MYSQL_HOST_DEV'] %>
+  username: <%= ENV['MYSQL_USERNAME_DEV'] %>
+  password: <%= ENV['MYSQL_PASSWORD_DEV'] %>
+  database: <%= ENV['MYSQL_DATABASE_DEV'] %>
+
+test:
+  <<: *default
+  host: <%= ENV['MYSQL_HOST_DEV'] %>
+  username: <%= ENV['MYSQL_USERNAME_DEV'] %>
+  password: <%= ENV['MYSQL_PASSWORD_DEV'] %>
+  database: <%= ENV['MYSQL_DATABASE_TEST'] %>
+
+staging:
+  <<: *default
+  host: <%= ENV['MYSQL_HOST_STAGING'] %>
+  username: <%= ENV['MYSQL_USERNAME_STAGING'] %>
+  password: <%= ENV['MYSQL_PASSWORD_STAGING'] %>
+  database: <%= ENV['MYSQL_DATABASE_STAGING'] %>
+
+production:
+  <<: *default
+  host: <%= ENV['MYSQL_HOST_PROD'] %>
+  username: <%= ENV['MYSQL_USERNAME_PROD'] %>
+  password: <%= ENV['MYSQL_PASSWORD_PROD'] %>
+  database: <%= ENV['MYSQL_DATABASE_PROD'] %>

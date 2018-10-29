@@ -1,0 +1,104 @@
+<header class="header-featured">
+  <div class="container">
+    <h2 class="header-featured-title">Sua próxima solução de <strong><%= @category.nome %></strong></h2>
+    <h3 class="category-products-features-title">
+      Soluções em <%= @category.nome %> em evidência
+    </h3>
+    <div class="row">
+      <% @featured_products.each do |product| %>
+        <div class="col-md-4">
+          <div class="category-product-featured">
+            <%= link_to(image_tag(product.small_product_image, class: 'product-image'), produto_path(product.custom_name)) %>
+            <small><%= @category.nome %></small>
+            <h3 class="product-name truncate-text"><%= link_to(product.nome, produto_path(product.custom_name)) %></h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <aside class="aside">
+    <header class="header-sidebar-submenu">
+      <h3 class="title-h3">Filtre por Categoria</h3>
+      <div class="navigate-toggle" data-tools="navigation-toggle" data-target="#more">
+        <span>
+          <i class="icon-more"></i>
+        </span>
+      </div>
+    </header>
+    <nav id="more">
+      <ul class="category-list">
+        <li><%= @category.parent_name %></li>
+        <% @category.parent_categories.each do |category| %>
+        <li><%= link_to category.nome, categoria_path(category.nome.parameterize) %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="section-with-aside">
+    <div class="row">
+      <div class="col">
+        <h3 class="title-h3">Todas as soluções em <%= @category.nome %></h3>
+        <!--
+        <ul class="pagination">
+          <li><a href="#"> < </a></li>
+          <li><a href="#"> 1 </a></li>
+          <li><a href="#"> 2 </a></li>
+          <li><a href="#"> 3 </a></li>
+          <li><a href="#"> 4 </a></li>
+          <li><a href="#"> 5 </a></li>
+          <li><a href="#"> > </a></li>
+        </ul>
+        -->
+      </div>
+      <!--
+      <div class="col text-right">
+        <div class="styled-select right">
+          <label for="#">ordenar por</label>
+          <div class="select">
+            <select name="#" id="#">
+              <option value="#">Score B2B</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+    <ul class="categories-list">
+      <% @products.each do |product| %>
+        <li class="row categories-list-item">
+          <div class="col-md-10 col-md-push-2">
+            <h3 class="title-highlight"><%= link_to(product.nome, produto_path(product.custom_name)) %></h3>
+            <p class="categories-item-description desktop-only">
+              <%= product.descricao %>
+            </p>
+          </div>
+          <div class="col-md-2 col-md-pull-10">
+            <%= link_to(image_tag(product.small_product_image, class: 'product-image', width: 115, height: 85), produto_path(product.custom_name), class: "categories-product") %>
+            <p class="categories-item-description mobile-only">
+              <%= product.descricao %>
+            </p>
+          </div>
+          <!--
+          <div class="col-md-5 text-right">
+            <div class="awards">
+              <ul>
+                <li class="awards-item icon-comment">
+                  <strong>Mais avaliado</strong> no B2B Stack
+                </li>
+                <li class="awards-item icon-badge">
+                  <strong>Melhor avaliado</strong> Outbound Marketing
+                </li>
+              </ul>
+            </div>
+          </div>
+          -->
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</div>

@@ -1,0 +1,97 @@
+// MAIN
+
+
+
+.section-with-aside
+  display: inline-block
+  width: calc(100% - 390px)
+  vertical-align: top
+  margin-bottom: 10rem
+  +tablet-landscape-and-below
+    width: 100%
+    padding: 30px 15px
+    border-top: 1px solid #cccccc
+
++tablet-landscape-and-below
+  .container .section-with-aside
+    padding: 30px 0
+
+.aside
+  display: inline-block
+  width: 276px
+  vertical-align: top
+  margin-right: 80px
+  +tablet-landscape-and-below
+    width: 100%
+    margin-right: 0
+
+.title-highlight
+  font-size: 1.9rem
+  font-weight: 300
+  color: #3A3EA1
+  letter-spacing: -1px
+  &:before
+    content: "\6c"
+    font-family: "b2b"
+    color: #ff9945
+    font-size: 1.4rem
+    margin-right: 10px
+
+.header-featured
+  background-color: $color-primary
+  color: white
+  margin-bottom: 20px
+  &-title
+    text-align: center
+    font-size: 3rem
+    font-weight: 300
+    margin: 6rem 0
+    color: white
+    +tablet-landscape-and-below
+      margin: 2rem 0 3rem 0
+
+.header-sidebar-submenu
+  +tablet-landscape-and-below
+    padding-bottom: 10px
+    margin-bottom: 10px
+    .title-h3
+      display: inline-block
+    .navigate-toggle
+      width: auto
+      float: right
+      span
+        width: auto
+      .icon-more
+        color: #333333
+        font-size: 33px
+
+.thanks-header
+  background-color: $color-primary
+  color: white
+  text-align: center
+  padding: 0 0 40px 0
+  display: inline-block
+  width: 100%
+  margin-bottom: 40px
+  .container
+    position: relative
+    &:before
+      position: absolute
+      content: "t"
+      font-family: "b2b"
+      font-size: 90px
+      opacity: 0.4
+      top: 0
+      left: 15%
+      +tablet-landscape-and-below
+        position: static
+        margin: 0 auto
+  &.alert .container:before
+    content: "a"
+
+.thanks-section
+  padding: 4rem 0
+  h2
+    font-size: 2.2rem
+    font-weight: 300
+    margin-bottom: 4rem

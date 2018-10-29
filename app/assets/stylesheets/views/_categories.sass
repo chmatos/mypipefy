@@ -1,0 +1,172 @@
+// CATEGORIES
+
+
+
+.categories-featured
+  .container
+    background: image-url('bkg-categories.png') no-repeat
+    background-position: 150px 35px
+    +tablet-portrait-and-below
+      background-image: none
+    @media screen and (width: 1024px)
+      background-position: 151px 0px
+      background-size: 25%
+  &-list
+    text-align: center
+    margin: 0
+    padding: 0
+  &-list-item
+    display: inline-block
+    text-align: left
+    width: calc(33.33% - 20px)
+    margin-right: 20px
+    list-style: none
+    +tablet-landscape-and-below
+      width: 100%
+      margin: 0 0 50px 0
+      text-align: center
+    &:last-child
+      margin-right: 0
+  &-item-title
+    font-size: 2rem
+    font-weight: 700
+  &-item-description
+    margin: 1.5rem 0
+    font-weight: 300
+    font-size: 1.4rem
+  &-product
+    display: inline-flex
+    margin-right: 4px
+    width: 115px
+    height: 85px
+    background-color: white
+    align-items: center
+    border-radius: 10px 10px 0 0
+    vertical-align: bottom
+    +tablet-landscape-and-below
+      width: calc((100vw - 45px) / 3)
+      height: calc((100vw - 100px) / 3)
+      border-radius: 10px
+      max-width: 115px
+      max-height: 85px
+    &:last-child
+      margin-right: 0
+    img
+      width: 100%
+      height: auto
+      margin: 0 auto
+      padding: 20px
+
+.categories
+  margin: 5rem 0
+  +tablet-landscape-and-below
+    margin: 2rem 0
+  &-item-title
+    font-size: 1.9rem
+    font-weight: 300
+    color: $color-primary
+    letter-spacing: -1px
+    &:before
+      content: ">"
+      color: #ff9945
+      font-size: 2.4rem
+      margin-right: 10px
+  &-item-description
+    line-height: 1.45rem
+    margin: 10px 0
+    &.mobile-only
+      display: inline-block
+      width: calc(100% - 120px)
+      vertical-align: middle
+      margin-left: 10px
+  &-product
+    display: inline-flex
+    vertical-align: middle
+    margin-right: 3px
+    width: 100px
+    height: 75px
+    border: 1px solid #cccccc
+    border-radius: 10px
+    align-items: center
+    +tablet-landscape-and-below
+      margin-top: 3px
+      margin-bottom: 3px
+      width: calc((100vw - 45px) / 3)
+      height: calc((100vw - 115px) / 3)
+      max-width: 100px
+      max-height: 75px
+    img
+      width: 100%
+      height: auto
+      margin: 0 auto
+      padding: 20px
+    &-view-more
+      font-size: 1.1rem
+      color: #ff9945
+      margin-left: 20px
+      font-weight: 500
+      text-decoration: underline
+      +tablet-landscape-and-below
+        display: block
+        margin-top: 10px
+  &-list
+    width: 90%
+    margin: 0 auto
+    .col
+      padding: 0
+  &-list-item
+    padding: 30px 0
+    border-bottom: 1px solid #cccccc
+    list-style: none
+    &:last-child
+      border-bottom: 0
+    .title-highligths
+      margin-top: -30px
+
+.category-list
+  margin-bottom: 50px
+  li
+    font-weight: 600
+    padding: 5px 0
+    font-size: 1.3rem
+
+.product-image
+  // border: 1px solid #cccccc
+  // border-radius: 5px
+  width: 100%
+  height: auto
+  display: inline-block
+  margin-top: 7px
+  padding: 20px
+
+.category-product-featured
+  padding: 25px
+  background-color: white
+  color: #333333
+  border-radius: 10px
+  margin-bottom: 20px
+  height: 138px
+  +tablet-landscape-and-below
+    padding: 15px
+  a
+    width: 150px
+    height: 105px
+    display: flex
+    align-items: center
+    float: left
+    img
+      padding: 25px
+  small
+    font-weight: 600
+    font-size: 1rem
+  .product-name
+    font-size: 1.7rem
+    font-weight: 400
+    a
+      height: auto
+      width: auto
+
+.category-products-features-title
+  text-align: center
+  margin-bottom: 20px
+  font-size: 1.4rem

@@ -1,0 +1,13 @@
+<% question = answer.questionario_pergunta.pergunta.split('?')%>
+<div class="step step-1">
+  <h3 class="step-title"><%= question[0].gsub('{SOFTWARE}', @product.nome) %>?</h3>
+  <small class="step-info"><%= question[1] %></small>
+  <div class="rating-number">
+    <fieldset class="numbers">
+      <% (1..10).each do |number| %>
+        <%= builder.radio_button :resposta, number, required: (answer.questionario_pergunta.required? && number == 1) %>
+        <%= builder.label "resposta_#{number}", number, class: 'number' %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

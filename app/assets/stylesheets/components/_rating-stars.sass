@@ -1,0 +1,66 @@
+// RANGE STARS
+
+
+// https://codepen.io/jamesbarnett/pen/vlpkh
+.stars
+  border: none
+  width: 220px
+  margin: -20px 0 0 -15px
+  +tablet-landscape-and-below
+    width: auto
+  >
+    input
+      opacity: 0
+      float: right
+      margin: 28px -0px 0px -12px
+    label:before
+      margin: 5px
+      font-size: 30px
+      font-family: "b2b"
+      display: inline-block
+      content: "\66"
+    .half:before
+      content: "\66"
+      position: absolute
+    label
+      color: #ddd
+      float: right
+    input:checked ~ label
+      color: $color-primary
+  &:not(:checked) > label:hover
+    color: $color-primary
+    ~ label
+      color: $color-primary
+  >
+    input:checked
+      + label:hover, ~ label:hover
+        color: lighten($color-primary, 20)
+    label:hover ~ input:checked ~ label, input:checked ~ label:hover ~ label
+      color: lighten($color-primary, 20)
+
+.numbers
+  border: none
+  margin: 0
+  padding: 0
+  input
+    opacity: 0
+    float: left
+    margin: 9px -34px -21px 20px
+  label
+    border: 1px solid #333333
+    padding: 1px 0
+    width: 30px
+    display: inline-block
+    border-radius: 4px
+    font-weight: 600
+    font-size: 1.3rem
+    text-align: center
+    margin-right: 5px
+    +tablet-landscape-and-below
+      width: 25px
+      font-size: 1rem
+      margin: 10px 20px 10px 0
+  input:checked + label
+    background-color: $color-primary
+    border-color: $color-primary
+    color: white

@@ -1,0 +1,35 @@
+<header class="thanks-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-md-offset-3">
+        <h2 class="banner-title">Avaliação cadastrada com sucesso!</h2>
+        <p class="banner-p">Sua avaliação foi enviada para análise e deve ser incluída na base de dados em até 48hs.</p>
+        <p class="banner-p">Não se preocupe, você receberá um e-mail te avisando.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="thanks-section">
+  <div class="container">
+    <h2 class="text-center">Faça uma nova avaliação</h2>
+    <div class="row">
+      <div class="col-custom-33">
+        <h3 class="title-highlight">Melhores avaliados</h3>
+        <ul class="products-list per-line-3">
+          <% @top_rated_products.each do |product| %>
+            <li class="products-list-item"><%= link_to(image_tag(product.thumb_product_image, class: 'product-image', size: '115x85'), produto_path(url: product.custom_name)) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-custom-65">
+        <h3 class="title-highlight">Mais avaliados</h3>
+        <ul class="products-list per-line-6">
+          <% @featured_products.each do |product| %>
+            <li class="products-list-item"><%= link_to(image_tag(product.thumb_product_image, class: 'product-image', size: '115x85'), produto_path(url: product.custom_name)) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

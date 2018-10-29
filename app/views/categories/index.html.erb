@@ -1,0 +1,43 @@
+<section class="header-featured categories-featured">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3">
+        <h2 class="header-featured-title">Sua próxima solução B2B</h2>
+      </div>
+    </div>
+    <ul class="categories-featured-list">
+      <% @featured_categories.each do |featured_category| %>
+        <li class="categories-featured-list-item">
+           <h3 class="categories-featured-item-title"><%= featured_category.nome %></h3>
+           <p class="categories-featured-item-description"><%= featured_category.descricao %></p>
+           <% featured_category.featured_products.each do |product| %>
+            <% product = ProductDecorator.new(product) %>
+            <%= link_to(image_tag(product.small_product_image, size: "115x85"), produto_path(product.custom_name), class: "categories-featured-product") %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <ul class="categories-list">
+      <% @categories.each do |category| %>
+        <li class="row categories-list-item">
+          <div class="col">
+            <h3 class="title-highlight"><%= category.nome %></h3>
+            <p class="categories-item-description"><%= category.descricao %></p>
+          </div>
+          <div class="col text-right">
+            <% category.featured_products(4).each do |product| %>
+              <% product = ProductDecorator.new(product) %>
+              <%= link_to(image_tag(product.small_product_image, size: "115x85"), produto_path(product.custom_name), class: "categories-product") %>
+            <% end %>
+            <%= link_to 'ver todos', categoria_path(category.custom_name) , class: "categories-product-view-more" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

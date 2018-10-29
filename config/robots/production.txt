@@ -1,0 +1,2 @@
+Sitemap: https://b2bstack.net/sitemap.xml
+Agent: *

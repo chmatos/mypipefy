@@ -1,0 +1,5 @@
+<% answer.questionario_pergunta.opcoes.split('|').each do |option| %>
+  <% key = option.split(' ').first.downcase %>
+  <%= builder.radio_button :resposta, key, class: 'radio', required: answer.questionario_pergunta.required? %>
+  <%= builder.label "resposta_#{key}", option, class: 'label' %>
+<% end %>

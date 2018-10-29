@@ -1,0 +1,97 @@
+<aside class="aside product-sidebar <%= product_manager_helper?(product: @product, user: current_user) ? 'owner' : nil %>">
+
+  <h4 class="product-description">
+    <%= @product.descricao %>
+  </h4>
+
+  <div class="product-sidebar-info">
+    <%= demo_button_helper(@product) %>
+    <%= assessment_button_helper(@product) %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <% if @product.ideal_profile %>
+      <h4 class="product-sidebar-title">Perfil Ideal</h4>
+      <small><%= @product.ideal_profile %></small>
+    <% end %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <% if @product.initial_price %>
+      <h4 class="product-sidebar-title">Preço inicial</h4>
+      <%= number_to_currency @product.initial_price %> <%= t "activerecord.attributes.produto.price_kinds.#{@product.price_kind}" %>
+    <% end %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <% if @product.trial_kind %>
+      <h4 class="product-sidebar-title">Permite teste?</h4>
+
+      <% if @product.trial_kind == 4 %>
+        <%= @product.trial_other_text %>
+      <% else %>
+        <%= t "activerecord.attributes.produto.trial_kinds.kind_#{@product.trial_kind}" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <% if @product.support_hour_kind %>
+      <h4 class="product-sidebar-title">Suporte</h4>
+      <%= t "activerecord.attributes.produto.support_hour_kinds.support_#{@product.support_hour_kind}" %> por
+      <%= @product.support_email ? 'email' : nil %>
+      <%= @product.support_chat ? 'chat' : nil %>
+      <%= @product.support_phone ? 'telefone' : nil %>
+    <% end %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <h4 class="product-sidebar-title">Treinamento</h4>
+    <%= @product.training_video ? 'Vídeo Aula' : nil %>
+    <%= @product.training_text ? 'Texto' : nil %>
+    <%= @product.training_presential ? 'Presencial' : nil %>
+    <%= @product.training_ebook ? 'E-book' : nil %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <h4 class="product-sidebar-title">Plataforma</h4>
+    <%= @product.access_web_navigation ? 'Navegador Web' : nil %>
+    <%= @product.access_mobile_ios ? 'Mobile - iOS' : nil %>
+    <%= @product.access_mobile_android? ? 'Mobile - Android' : nil %>
+    <%= @product.access_desktop_pc ? 'Desktop - PC' : nil %>
+    <%= @product.access_desktop_apple ? 'Desktop - Apple' : nil %>
+    <%= @product.access_desktop_linux ? 'Desktop - Linux' : nil %>
+  </div>
+
+  <div class="product-sidebar-info">
+    <h4 class="product-sidebar-title">Fabricante</h4>
+    <%= @product.custom_company_name %>
+    <small>
+      empresa fundada em <%= @product.start_year %> <br>
+      <%= link_to(safe_url(@product.custom_company_url), @product.custom_company_url, target: '_blank') %>
+    </small>
+  </div>
+
+  <div class="product-sidebar-info">
+    <h4 class="product-sidebar-title"><%= link_to("Outras soluções da #{@product.custom_company_name}", '#', class: "product-sidebar-title-link") %></h4>
+  </div>
+
+  <div class="product-sidebar-info">
+    <% if @main_category %>
+      <h4 class="product-sidebar-title">Outras soluções de <%= @main_category.nome %></h4>
+      <ul class="product-sidebar-list">
+        <% @main_category_featured_products.each do |produto| %>
+          <li class="product-sidebar-list-item">
+            <div class="product-small-logo">
+              <%= image_tag produto.small_product_image, size: '52x52' %>
+            </div>
+            <span>
+              <small><%= produto.main_category.nome %></small>
+              <h5><%= link_to produto.nome, produto_path(produto.custom_name) %></h5>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</aside>

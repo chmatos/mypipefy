@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <%= render 'common/head' %>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR58QFJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <%= render partial: "common/header" %>
+
+    <!-- Main -->
+    <main id="main">
+      <% flash.each do |key, value| %>
+        <% unless !params[:action] == 'thanks' %>
+          <%= content_tag :p, value, class: key %>
+        <% end %>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <%= render 'common/footer' %>
+    <%= render 'common/sign_up_modal' %>
+    <%= render 'common/login_modal' %>
+    <%= render 'common/sign_up_success_modal' %>
+    <%= render 'common/forgot_password_modal' %>
+  </body>
+</html>

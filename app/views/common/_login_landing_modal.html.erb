@@ -1,0 +1,22 @@
+<% if !current_user
+     session[:return_url] = current_url %>
+
+  <div class="modal login-landing" id="modal-login-landing">
+    <div class="modal-container login-landing">
+
+      <div class="conect-login-text">
+        Conecte-se com sua conta no Linkedin para iniciar umaa avaliação
+      </div>
+
+      <a href="/auth/linkedin" class="linkedin-button">
+        <div class="linkedin-logo">
+          <img src="https://png.icons8.com/ios/24/ffffff/linkedin-2-filled.png">
+          <div class="slide"></div>
+        </div>
+        <span class="linkedin-link">Crie uma conta com o seu Linkedin</span>
+      </a>
+
+    </div>
+  </div>
+  
+<% end %>

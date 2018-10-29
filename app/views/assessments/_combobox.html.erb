@@ -1,0 +1,9 @@
+<!-- STEP 5 -->
+<div class="step step-5">
+  <h3 class="step-title"><%= answer.questionario_pergunta.pergunta.gsub('{SOFTWARE}', @product.nome) %></h3>
+  <div class="styled-select">
+    <div class="select">
+      <%= builder.select :resposta, options_for_select(answer.questionario_pergunta.opcoes.split('|'), selected: builder.object.resposta), {include_blank: true}, required: answer.questionario_pergunta.required? %>
+    </div>
+  </div>
+</div>

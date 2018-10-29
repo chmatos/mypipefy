@@ -1,0 +1,64 @@
+<header class="header">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2 col-xs-12">
+        <%= link_to root_url, class: 'logo-link' do %>
+          <%= inline_svg "logo.svg", class: 'logo' %>
+        <% end %>
+
+        <div class="navigate-toggle" data-tools="navigation-toggle" data-target="#navbar">
+          <i class="icon-toggle"></i>
+          <span>
+            <% if current_user
+              image_url = current_user.image_url
+              image_url ||= "no-profile-image.png"
+              %>
+              <%= image_tag image_url, alt: current_user.name, class: 'header-avatar' %>
+            <% else %>
+              Menu
+            <% end %>
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-3 desktop-only">
+        <%= render partial: "search/bartopo" %>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <div class="col-md-4 col-xs-12">
+          <ul class="header-menu">
+            <li class="header-menu-item"><%= link_to 'Categorias', categorias_path, class: 'header-menu-link ico-arrow-down' %></li>
+            <li class="header-menu-item">
+              <% if current_user %>
+              <%= link_to 'Cadastrar Solução', novo_produto_path, class: 'header-menu-link ico-plus' %>
+              <% else %>
+              <%= link_to 'Cadastrar Solução', login_to_setup_path, class: 'header-menu-link ico-plus' %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 col-xs-12">
+          <ul class="header-menu">
+            <% if current_user
+              image_url = current_user.image_url
+              image_url ||= "no-profile-image.png"
+              %>
+              <li class="header-menu-item separator"><%= link_to 'sair', logout_path, method: :delete, class: 'header-menu-link' %></li>
+              <li class="header-menu-item last-child desktop-only"><%= image_tag image_url, alt: current_user.name, class: 'header-avatar' %></li>
+              <% else %>
+                <li class="header-menu-item separator">
+                  <a href="#" class="header-menu-link" id="modal-launcher" onclick="$('#modal-sign-up').fadeIn();">criar conta</a>
+                </li>
+                <li class="header-menu-item"><a href="#" class="header-menu-link" onclick="$('#modal-login').fadeIn();">entrar</a></li>
+              <% end %>
+            </ul>
+          </div>
+      </nav>
+
+
+    </div>
+  </div>
+</header>

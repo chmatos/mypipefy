@@ -1,0 +1,189 @@
+.modal
+  display: none
+  position: fixed
+  z-index: 999
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  overflow: hide
+  background-color: rgba(0,0,0,0.7)
+  &-subimit-button
+    width: 80%
+    height: 6vh
+    margin: 8% 10% 0
+    border-style: none
+    color: #fff
+    font-size: 1.2vw
+    text-align: center
+    background-color: $color-primary
+  &.forgot-password-modal
+    bottom: 0
+    margin-top: 0
+  &.login-landing
+    width: 90%
+    left: 5%
+    position: absolute
+    top: 48%
+  .icon-success,
+  .icon-alert
+    font-size: 80px
+    margin-bottom: 20px
+    display: inline-block
+  h2
+    font-weight: 400
+
+.modal-container
+  position: relative
+  width: 465px
+  height: auto
+  margin: 75px auto 15% auto
+  border: 1px solid #888
+  background-color: #ffffff
+  padding: 50px
+  +tablet-landscape-and-below
+    width: 100%
+    margin: 30vh 0
+  .forgot-password-container
+    margin-top: 6%
+  &.login-landing
+    width: 30%
+  .linkedin-button
+    margin: 0 auto
+  &.success, &.alert
+    text-align: center
+  &.success
+    .icon-success, h2
+      color: #379733
+  &.alert
+    .icon-alert, h2
+      color: #d8c209
+
+.modal-divider
+  width: 80%
+  height: 15px
+  margin: 5% 10% 0
+  text-align: center
+  border-bottom: 1px solid #ccc
+  &-text
+    padding: 0 20px
+    font-size: 16px
+    background-color: #fff
+
+.account-text
+  text-align: center
+  font-size: 1.3vw
+  margin-top: 6%
+  margin-bottom: 5%
+
+.conect-login-text
+  display: block
+  margin-top: 5%
+  text-align: center
+  font-size: 1.2em
+
+.form
+  label
+    margin-left: 10%
+    font-size: 1vw
+    font-weight: bold
+  input
+    width: 80%
+    height: 5vh
+    margin: 3% 10% 0
+  &.email
+    margin-top: 5%
+  &.confirm
+    margin-right: 14%
+  &.password
+    flex: 1
+    margin-left: 6%
+    input
+      width: 100%
+      margin-top: 7%
+
+.password-container
+  display: flex
+  width: 100%
+  margin-top: 3%
+
+.subimit-notice
+  display: block
+  margin-top: 5%
+  text-align: center
+  font-size: 0.7vw
+  a
+    color: $color-primary
+    text-decoration: underline
+    font-weight: bold
+
+.email-disclaimer
+  display: inline-block
+  width: 80%
+  margin: 0 0 5% 10%
+  font-size: 0.7vw
+
+.forgot-password-link
+  display: block
+  margin-top: 8%
+  cursor: pointer
+  text-decoration: underline
+  text-align: center
+  color: $color-primary
+  font-weight: bold
+  font-size: 0.7vw
+
+.remindme-container
+  margin: 5% 0 -5% 10%
+
+.boxclose
+  position: absolute
+  top: 0
+  right: 0
+  margin-right: -6px
+  margin-top: -1px
+  &:focus,
+  &:active,
+  &:hover
+    text-decoration: none
+    color: white
+  +tablet-landscape-and-below
+    top: auto
+    bottom: 0
+    right: 0
+    margin-right: 10px
+    margin-bottom: -40px
+    &:before
+      content: "CANCELAR"
+      color: white
+      font-size: 1.5rem
+  img
+    height: auto
+    width: 7%
+    float: right
+    margin-top: -2%
+    margin-right: -1%
+    cursor: pointer
+    +tablet-landscape-and-below
+      display: none
+
+.modal-signup-success-options
+  margin-top: 20px
+  li
+    border-right: 1px solid #cccccc
+    &:last-child
+      border-right: none
+    a
+      font-weight: 600
+
+.modal-static
+  display: inline-block
+  position: absolute
+  border: 0
+  padding: 20px 40px 40px 40px
+  top: 0
+  left: 0
+  width: 60%
+  +tablet-landscape-and-below
+    width: 100%
+    padding: 20px

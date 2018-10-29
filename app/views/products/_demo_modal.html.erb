@@ -1,0 +1,19 @@
+<div class="modal login" id="modal-demo">
+  <div class="modal-container success">
+    <a class="boxclose" onclick="$('#modal-demo').fadeOut();"> <img src="<%= image_path("cancel.svg")%>" /> </a>
+    <i class="icon-success"></i>
+    <h2>Obrigado!</h2>
+    <p>
+      Seu pedido de DEMO foi enviado, você receberá um e-mail com mais informações.
+    </p>
+  </div>
+</div>
+
+<script>
+const demoModal = document.getElementById('modal-demo');
+window.onclick = event => {
+  if (event.target == demoModal) {
+    $('#modal-demo').fadeOut();
+  }
+}
+</script>

@@ -1,0 +1,75 @@
+//HEADER
+
+
+
+.header
+  background-color: #3A3EA1
+  color: #FFF
+  padding: 30px 0
+  &-avatar
+    width: 53px
+    border-radius: 50%
+    +tablet-landscape-and-below
+      width: 48px
+      vertical-align: bottom
+  &-logo
+    margin-top: 1px
+  &-menu
+    text-align: right
+    margin: 0
+    padding: 0
+    +tablet-landscape-and-below
+      text-align: center
+    &-item
+      display: inline-block
+      width: auto
+      padding: 5px 15px 5px 15px
+      vertical-align: top
+      height: 50px
+      +tablet-landscape-and-below
+        width: 100%
+        text-align: center
+      &.separator
+        border-right: 1px solid #333333
+        +tablet-landscape-and-below
+          border-right: none
+      &.last-child
+        padding: 0 15px
+    &-link
+      &.ico-arrow-down:after
+        content: "\f107"
+        font-family: "FontAwesome"
+        margin-left: 6px
+      &.ico-plus:after
+        content: " + "
+        font-size: 32px
+        line-height: 27px
+    &-link,
+    &-link:link,
+    &-link:focus,
+    &-link:active,
+    &-link:visited
+      color: white
+      font-size: 1.6rem
+      text-decoration: none
+
+  .input-search
+    margin-top: -2px
+    &:before
+      padding: 5px 12px
+      border-radius: 9px
+      font-size: 21px
+    input
+      border: none
+      padding: 14px 20px
+      border-radius: 9px
+      height: 48px
+
+.logo
+  width: 12.5rem
+  height: 4.5rem
+  margin-top: -12px
+  margin-left: -5px
+  &-link
+    display: inline-block
+    vertical-align: middle

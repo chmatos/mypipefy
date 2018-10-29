@@ -1,0 +1,95 @@
+.landing-top
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  padding-bottom: 5%
+  margin-bottom: 50px
+  background-color: $color-primary
+
+.landing-logo
+  text-align: center
+  display: inline-block
+  width: 100%
+  background-color: $color-primary
+  padding: 25px 0
+
+.landing-h1
+  margin-top: 2.8%
+  color: #ffffff
+  font-size: 3.4em
+  +tablet-landscape-and-below
+    text-align: center
+    line-height: 3.5rem
+    margin-bottom: 6%
+
+.landing-h2
+  margin-top: 1%
+  color: #ffffff
+  font-size: 1.7em
+  font-weight: 400
+  +tablet-landscape-and-below
+    text-align: center
+    margin-bottom: 5%
+
+.landing-h3
+  margin-top: 1%
+  color: #ffffff
+  font-size: 1.2em
+  font-weight: bold
+  +tablet-landscape-and-below
+    text-align: center
+
+.landing-h4
+  text-align: center
+  color: #ffffff
+  font-size: 1.2em
+  font-weight: 400
+  +tablet-landscape-and-below
+    text-align: center
+
+.landing-products
+  margin-bottom: 50px
+  .products-list
+    +tablet-landscape-and-below
+      text-align: center
+
+.menu-title
+  color: $color-primary
+  font-size: 2em
+  display: inline-block
+  &.ico-arrow-right:after
+    content: "\f105"
+    font-family: "FontAwesome"
+    color: #FFA726
+    float: left
+    padding-right: 0.5em
+
+.menu-items
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  +tablet-landscape-and-below
+    text-align: center
+  a
+    margin-top: 5px
+    font-size: 1.5em
+    font-weight: 500
+    color: #29B6F6
+
+.menu-options
+  display: flex
+  flex-wrap: wrap
+  width: 70%
+  div
+    width: 115px
+    height: 100px
+    margin: 2% 0 0 2%
+    background-color: #ffffff
+    border: 0.1em solid #ddd
+    border-radius: 10%
+    img
+      position: relative
+      width: 90px
+      top: 10px
+      left: 10px

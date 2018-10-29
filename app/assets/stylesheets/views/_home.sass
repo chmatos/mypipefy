@@ -1,0 +1,226 @@
+// HOME
+
+section[class^="home-"]:not(.home-find-soluction)
+  height: 530px
+  padding: 5rem 0
+  +tablet-landscape-and-below
+    height: auto
+    padding: 2rem 0
+
+.home
+  &-title
+    font-size: 2.4rem
+    font-weight: 400
+    line-height: 2.6rem
+
+  &-button
+    display: inline-block
+    text-align: center
+    background-color: #333333
+    padding: 12px 80px
+    font-size: 1.5rem
+    color: white
+    &:hover
+      text-decoration: none
+      background-color: rgba(0,0,0, 0.6)
+      color: white
+    +tablet-landscape-and-below
+      display: block
+
+  &-link
+    color: #333333
+    font-weight: 400
+    font-size: 1.1rem
+    text-decoration: underline
+
+  &-description
+    margin-bottom: 3rem
+
+  &-find-soluction
+    background-color: $color-primary
+    color: white
+    padding: 1rem 0 6rem 0
+    +tablet-landscape-and-below
+      height: auto
+      padding: 2rem 0
+    .container
+      background-image: image-url('bkg-home-find-soluction.png')
+      background-position: -27px -6px
+      background-repeat: no-repeat
+      +tablet-landscape-and-below
+        background-image: none
+
+    .home-title
+      font-size: 3rem
+      font-weight: 300
+      margin: 1rem 0 2rem 0
+      line-height: 3.2rem
+    .home-subtitle
+      font-size: 1.8rem
+      font-weight: 300
+      line-height: 2rem
+      margin-bottom: 6rem
+      +tablet-landscape-and-below
+        margin-bottom: 3rem
+    .input-search
+      width: 70%
+      margin: 0 auto
+      +tablet-landscape-and-below
+        width: 100%
+      &:before
+        padding: 7px 10px
+        margin: 5px
+
+  &-assessments
+    background-color: #DCDBDC
+    &-item
+      position: relative
+      +tablet-landscape-and-below
+        margin-bottom: 30px
+    .box-comment
+      padding: 0 20px
+      background-color: white
+      border: 1px solid $color-primary
+      height: 250px
+      overflow: hidden
+      margin-bottom: 20px
+      &::before
+        content: "\78"
+        font-family: "b2b"
+        font-size: 55px
+        color: white
+        text-shadow: 0px 1px 0px $color-primary
+        position: absolute
+        top: 257px
+        left: 0
+        margin-left: calc(50% - 30px)
+    .home-subtitle
+      font-size: 1.4rem
+      font-weight: 400
+      margin-bottom: 1rem
+    .home-button
+      padding: 12px 30px
+      width: 100%
+    &-account
+      .product-evaluation-account
+        width: calc(100% - 85px)
+
+  &-evaluation
+    background-color: #f7f7f7
+    .home-button
+      width: 95%
+      +tablet-landscape-and-below
+        margin: 0 auto
+    .container
+      background-image: image-url('bkg-home-evaluation.png')
+      background-position: right bottom
+      background-repeat: no-repeat
+      padding: 0rem 0 16.2rem
+      +tablet-landscape-and-below
+        background-image: none
+        padding: 0 20px
+
+  &-categories
+    +tablet-landscape-and-below
+      padding: 1.5rem 0
+    &-item
+      display: inline-block
+      background-color: white
+      font-size: 1.1rem
+      font-weight: 600
+      line-height: 1rem
+      width: 220px
+      +tablet-landscape-and-below
+        width: auto
+        font-size: 1.2rem
+        padding: 0.5rem 2.5rem 0.5rem 0
+      a:hover
+        text-decoration: none
+
+  &-soluctions
+    .container
+      background-image: image-url('bkg-home-soluctions.png')
+      background-position: right bottom
+      background-repeat: no-repeat
+      padding: 0 0 8.6rem 0
+      height: 460px
+      +tablet-landscape-and-below
+        background-image: none
+        padding: 0 20px
+        height: auto
+    .home-link
+      margin-top: 3rem
+      display: block
+      +tablet-landscape-and-below
+        margin-top: 0
+
+  &-payment
+    background-color: #f7f7f7
+    .container
+      background-image: image-url('bkg-home-payment.png')
+      background-position: right bottom
+      background-repeat: no-repeat
+      padding: 0 0 17.35rem 0
+      +tablet-landscape-and-below
+        background-image: none
+        padding: 0 20px
+
+  &-partners
+    background-color: #E1E1E1
+    padding: 6rem 0 !important
+    +tablet-landscape-and-below
+      padding: 2rem 0 !important
+    .blockquote
+      text-align: center
+    blockquote, cite
+      font-size: 1.8rem
+      font-weight: 300
+    blockquote
+      text-align: left
+      margin-top: 0
+      +tablet-landscape-and-below
+        font-size: 1.2rem
+      &:before
+        content: "\6b"
+        font-family: "b2b"
+        font-size: 60px
+        float: left
+        line-height: 46px
+        padding-right: 25px
+        padding-bottom: 180px
+    cite,
+    cite small
+      font-style: normal
+    cite small
+      font-size: 1rem
+      font-weight: 600
+      display: block
+
+  // TO REF
+  &-analyse
+    height: 268px !important
+    padding: 2rem 0 !important
+    +tablet-landscape-and-below
+      height: auto !important
+      padding: 2rem 0 !important
+    .icon:before
+      content: "\68"
+      font-family: "b2b"
+      font-size: 150px
+      margin-right: 40px
+      vertical-align: bottom
+      +tablet-landscape-and-below
+        font-size: 70px
+        vertical-align: top
+        line-height: 70px
+    .block-text
+      width: calc(100% - 205px)
+      display: inline-block
+      vertical-align: text-bottom
+      +tablet-landscape-and-below
+        width: calc(100% - 125px)
+        vertical-align: top
+    .home-button
+      margin: 6rem 0
+      +tablet-landscape-and-below
+        margin: 0

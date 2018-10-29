@@ -1,0 +1,195 @@
+<section class="home-find-soluction">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 desktop-only">
+        &nbsp;
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <h1 class="home-title">
+          Encontre a melhor solução para sua empresa
+        </h1>
+        <h3 class="home-subtitle">
+          Categorizamos os principais softwares do mercado, avaliados por profissionais como você.
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="input-search">
+          <input type="text" placeholder="busque por categorias ou nomes de soluções" id="search_input">
+          <ul id="result_search" class="bartop search-result"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-assessments">
+  <div class="container">
+    <div class="row">
+
+      <% @answers.each do |answer| %>
+        <div class="col-md-3">
+          <div class="home-assessments-item">
+            <h3 class="home-subtitle">Avaliações do <%= link_to answer.avaliacao.produto.nome, produto_path(answer.avaliacao.produto.nome.parameterize.downcase) %></h3>
+            <div class="box-comment">
+              <%= content_tag :p, truncate(answer.resposta, length: 232), title: answer.resposta %>
+              <%= link_to 'Ler avaliação completa', produto_path(answer.avaliacao.produto.nome.parameterize.downcase) %>
+            </div>
+            <div class="home-assessments-account">
+              <%= image_tag (answer.avaliacao.oauth_account.image_url || '/assets/fallback-img.png'), class: 'product-evaluation-account-avatar', onerror: "this.src='/assets/fallback-img.png'" %>
+              <span class="product-evaluation-account">
+                <h4 class="product-evaluation-account-name"><%= answer.avaliacao.oauth_account.name %></h4>
+                <p class="product-evaluation-account-description"><%= answer.avaliacao.oauth_account.headline %></p>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="col-md-3">
+        <h2 class="home-title">Avaliações de software B2B feito por pessoas como você!</h2>
+        <p>Leia avaliaçoes de usuários reaise confiáveis sobre os softwares B2B mais usados no mercado.</p>
+        <%= link_to 'escreva uma avaliação', categorias_path, class: 'home-button' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-evaluation">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <h2 class="home-title">
+          Avalie uma solução e concorra a prêmios!
+        </h2>
+        <p class="home-description">
+          Participe dos nossos sorteios, deixando uma avaliação de alguma solução que você usa ou já usou.
+        </p>
+        <%= link_to 'avaliar e concorrer', categorias_path, class: 'home-button' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-soluctions">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-xs-12 col-lg-push-5">
+        <h2 class="home-title">
+          Soluções para todos os departamentos
+        </h2>
+      </div>
+      <div class="col-lg-5 col-xs-12 col-lg-pull-7">
+        <ul class="home-categories">
+          <% main_categories_list.each do |category| %>
+            <li class="home-categories-item">
+              <%= link_to category.nome, categoria_path(category.custom_name) %>
+            </li>
+          <% end %>
+        </ul>
+
+        <%= link_to 'ver todas as categorias', categorias_path, class: 'home-link' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-payment">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="home-title">
+          Transparência no processo de compra B2B
+        </h2>
+        <p class="home-description">
+          Todas as avaliações são enviadas por usuários reais (que possuem uma conta no LinkedIn)e passam por um processo de curadoria interna antes de serem postadas. Sem avaliações de competidores, funcionários ou "fakes".
+        </p>
+        <%= link_to 'Saiba mais', categorias_path, class: 'home-button' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-partners">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 col-lg-push-6">
+        <h2 class="home-title">
+          O B2B Stack é bem avaliado...<br>
+          e bem frequentado!
+        </h2>
+        <p class="home-description">
+          Alguns dos maiores influenciadores B2B nacionais e internacionais recomendam a plataforma. Milhares de usuários de diversas empresas usam do B2B Stack para tornarem melhores decisões de compra de software.
+        </p>
+      </div>
+      <div class="col-xs-12 col-lg-6 col-lg-pull-6">
+        <div class="js-carousel-blockquote">
+
+          <!-- Blockquote 1 -->
+          <div class="blockquote">
+            <blockquote>
+              Parte da jornada de uma empresa para alcançar receita previsível envolve investir em automação do seu processo. O B2B Stack vai ajudar muitas equipes a economizar tempo na escolha das ferramentas adequadas para essa automação.
+            </blockquote>
+            <cite>
+              Aaron Ross
+              <small>Autor dos Best Sellers: Receita Previsível & Hipercrescimento</small>
+            </cite>
+          </div>
+
+          <!-- Blockquote 2 -->
+          <!-- <div class="blockquote">
+            <blockquote>
+              As empresas B2B precisam estar atentas aos feedbacks dos clientes para ter certeza que estão proporcionando seu sucesso. O B2B Stack será um excelente canal neste sentido.
+            </blockquote>
+            <cite>
+              Lincoln Murphy
+              <small>Customer Success-driven Growth</small>
+            </cite>
+          </div> -->
+
+          <!-- Blockquote 3 -->
+          <!-- <div class="blockquote">
+            <blockquote>
+              Na vida de um empreendedor é sempre um grande desafio escolher ou mudar de software, por isso ver reviews de quem usa e recomenda determinadas soluções aqui no B2BStack me ajudou muito nesse processo de decisão.
+            </blockquote>
+            <cite>
+              Guilherme Junqueira
+              <small>CEO na Gama Academy</small>
+            </cite>
+          </div> -->
+
+          <!-- Blockquote 3 -->
+          <!-- <div class="blockquote">
+            <blockquote>
+              Cada vez mais vemos mais soluções disponíveis no mercado. O B2B Stack é o lugar pra entender qual a solução adequada pro momento da sua empresa.
+            </blockquote>
+            <cite>
+              Ricardo Corrêa
+              <small>CEO na Ramper</small>
+            </cite>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-analyse">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 icon">
+        <div class="block-text">
+          <h2 class="home-title">Escreva uma avaliação</h2>
+          <p class="home-description">
+            Deixe uma avaliação de soluções B2B que você usa (ou já usou) e concorra a prêmios.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <%= link_to 'escolha um software', categorias_path, class: 'home-button' %>
+      </div>
+    </div>
+  </div>
+</section>

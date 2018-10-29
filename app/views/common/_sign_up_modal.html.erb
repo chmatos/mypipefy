@@ -1,0 +1,65 @@
+<% if !current_user
+     session[:return_url] = current_url %>
+
+  <div class="modal sign-up" id="modal-sign-up">
+    <div class="modal-container sign-up">
+      <a class="boxclose" onclick="$('#modal-sign-up').fadeOut();"> <img src="<%= image_path("cancel.svg")%>" /> </a>
+      <a href="/auth/linkedin" class="linkedin-button">
+        <div class="linkedin-logo">
+          <img src="https://png.icons8.com/ios/24/ffffff/linkedin-2-filled.png">
+          <div class="slide"></div>
+        </div>
+        <span class="linkedin-link">Crie uma conta com o seu Linkedin</span>
+      </a>
+
+     <!--
+      <div class="modal-divider">
+        <span class="modal-divider-text">ou</span>
+      </div>
+
+      <div class="account-text">
+        Crie uma conta com o seu email
+      </div>
+
+      <div class="sign-up-form">
+        <div class="form fullname">
+          <label>Seu nome</label>
+          <input type="text">
+        </div>
+
+        <div class="form email">
+          <label>Seu e-mail</label>
+          <input type="text">
+        </div>
+
+        <div class="password-container">
+          <div class="form password">
+            <label>Sua senha</label>
+            <input type="password">
+          </div>
+          <div class="form password confirm">
+            <label>Confirme sua senha</label>
+            <input type="password">
+          </div>
+        </div>
+      </div>
+
+      <input value="Criar conta" type="submit" class="modal-subimit-button">
+
+      <span class="subimit-notice">
+        Você já possui uma conta? <a href="#" onclick="$('#modal-sign-up').hide(); $('#modal-login').fadeIn();">Entrar</a>
+      </span>
+      -->
+    </div>
+  </div>
+
+  <script>
+  const modal = document.getElementById('modal-sign-up');
+  window.onclick = event => {
+    if (event.target == modal) {
+      $('#modal-sign-up').fadeOut();
+    }
+  }
+  </script>
+
+<% end %>

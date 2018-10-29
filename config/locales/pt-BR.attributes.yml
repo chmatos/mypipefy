@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    attributes:
+      produto:
+        product_image: 'Imagem'
+        price_kinds:
+          monthly: 'ao mês'
+          annual: 'ao ano'
+        trial_kinds:
+          kind_0: 'Acesso por tempo limitado'
+          kind_1: 'Versão gratuita'
+          kind_2: 'PoC - Proof of concept'
+          kind_3: 'Não possui'
+        support_hour_kinds:
+          support_0: 'Horário Comercial'
+          support_1: '24/7'

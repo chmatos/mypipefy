@@ -1,0 +1,389 @@
+$padding-logo: 355px
+
+.product
+  &-header
+    background-color: $color-primary
+    color: white
+    height: 200px
+    +tablet-landscape-and-below
+      height: auto
+    &-title
+      padding-left: $padding-logo
+      padding-top: 90px
+      display: inline-block
+      width: calc(100% - 305px)
+      +tablet-landscape-and-below
+        width: calc(100% - 210px)
+        padding-left: 10px
+        padding-top: 0
+        vertical-align: bottom
+      +mobile-portrait-only
+        width: 100%
+    &-category-name
+      margin: 3px 0
+      font-weight: 300
+      font-size: 1rem
+      +tablet-landscape-and-below
+        margin: 10px 0 -7px 0
+    &-name
+      font-size: 3rem
+      font-weight: 300
+      +tablet-landscape-and-below
+        font-size: 2rem
+    &-highlights
+      width: 300px
+      &-item
+        border-left-color: 1px solid rgba(255,255,255, 0.3)
+
+  &-owner-options
+    padding-left: $padding-logo
+    height: 76px
+    display: flex
+    align-items: center
+    border-bottom: 2px solid $color-primary
+    +tablet-landscape-and-below
+      padding-left: 0
+    .option-item
+      display: inline-block
+      position: relative
+      padding: 0px 20px
+      font-size: 1.3rem
+      border-right: 1px solid #e6e6e6
+      &.active
+        a
+          color: #333333
+          cursor: default
+          &:hover
+            text-decoration: none
+        &:before
+          content: ""
+          position: absolute
+          top: 39px
+          left: 0
+          margin-left: calc(50% - 24px)
+          display: inline-block
+          width: 0
+          height: 0
+          border-bottom: 12px solid $color-primary
+          border-left: 12px solid transparent
+          border-right: 12px solid transparent
+        &:after
+          content: ""
+          position: absolute
+          top: 41px
+          left: 0
+          margin-left: calc(50% - 22px)
+          display: inline-block
+          width: 0
+          height: 0
+          border-bottom: 10px solid #ffffff
+          border-left: 10px solid transparent
+          border-right: 10px solid transparent
+      &:first-child
+        padding-left: 0
+      &:last-child
+        border-right: none
+
+  &-sidebar
+    padding-top: 100px
+    +tablet-landscape-and-below
+      padding-top: 10px
+    &.owner
+      padding-top: 50px
+    &-info
+      margin: 30px 0
+      font-size: 1.4rem
+      font-weight: 500
+    &-title
+      font-size: 1rem
+      color: $color-primary
+      &-link
+        position: relative
+        border-top: 1px solid #ccc
+        border-bottom: 1px solid #ccc
+        padding: 25px 0
+        color: $color-primary
+        display: block
+        &:hover
+          text-decoration: none
+        &:after
+          content: "\f105"
+          font-family: "FontAwesome"
+          color: #8c8989
+          position: absolute
+          top: 0
+          right: 0
+          margin: 10px 15px
+          font-size: 30px
+          font-weight: lighter
+    &-list
+      margin-top: 20px
+      &-item
+        margin-bottom: 15px
+        span
+          display: inline-block
+          vertical-align: text-bottom
+          padding-left: 10px
+        small
+          text-transform: uppercase
+          font-size: 0.7rem
+        h5
+          margin: 0
+          font-weight: 300
+          font-size: 2.2rem
+          line-height: 1.3rem
+    .button
+      width: 100%
+      margin-bottom: 10px
+
+  &-evaluation
+    margin-top: 40px
+    h2
+      font-size: 2.2rem
+      font-weight: 300
+    textarea
+      height: 150px
+    &.linkedin-button
+      margin: 30px 0 80px 0
+      padding: 0 30px 0 0
+      height: 48px
+      width: 340px
+      +tablet-landscape-and-below
+        width: 300px
+    &-item
+      border-bottom: 1px solid #e6e6e6
+      padding-bottom: 20px
+      margin-bottom: 40px
+      &:only-child
+        border-bottom: 0
+      .modal-static
+        display: none
+      &.signout:not(:first-child)
+        position: relative
+        aside,
+        article
+          -webkit-filter: blur(7px)
+          -moz-filter: blur(7px)
+          -o-filter: blur(7px)
+          -ms-filter: blur(7px)
+          filter: blur(7px)
+        &:before
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          padding: 20px 0
+          box-sizing: content-box
+          display: inline-block
+          background-color: rgba(0, 0, 0, 0.5)
+      &.signout
+        border-bottom: 0
+      &.signout:nth-child(2) .modal-static
+        display: inline-block
+        margin: 60px auto
+        +tablet-landscape-and-below
+          margin: 50% 0
+        .linkedin-button
+          width: 250px
+          height: 50px
+          margin: 0 auto
+          font-size: 1rem
+    &-rating
+      margin: 20px 0 70px 0
+      text-align: right
+      +tablet-landscape-and-below
+        text-align: left
+        margin: 0 0 30px 0
+        border-bottom: 1px solid #cccccc
+      &-item
+        display: inline-block
+        padding: 0 5px
+        text-align: left
+        width: 101px
+        +tablet-landscape-and-below
+          width: calc(98% / 3)
+          margin-bottom: 20px
+        &:first-child
+          padding-left: 0
+        h3
+          text-transform: uppercase
+          font-size: .7rem
+          font-weight: 500
+          letter-spacing: -0.02rem
+          i
+            color: $color-secondary
+            +tablet-landscape-and-below
+              display: none
+        p
+          font-size: 3.3rem
+          color: $color-primary
+          margin: 0
+          +tablet-landscape-and-below
+            font-size: 2.3rem
+          &.strong
+            font-weight: 700
+          &:after
+            content: "/5"
+            font-size: 1rem
+            font-weight: 300
+            margin-left: -10px
+    &-agreement
+      border: 1px solid $color-primary
+      padding: 2rem
+      display: inline-block
+      .button
+        margin-top: 30px
+    &-account
+      display: inline-block
+      width: calc(100% - 115px)
+      vertical-align: top
+      margin-left: 10px
+      &-name
+        font-size: 1.8rem
+        font-weight: 300
+        line-height: 1.7rem
+      &-description
+        font-size: .9rem
+        margin: 0 0 10px 0
+      &-avatar
+        border-radius: 50%
+        width: 70px
+        height: 70px
+      .seal
+        margin-top: 20px
+        margin-left: -2px
+    &-question
+      font-size: 1.1rem
+    &-answer
+      margin: 0 0 20px 0
+    &-list
+      padding: 0
+      margin: 4rem 0
+    &-item
+      list-style: none
+      aside
+        display: inline-block
+        vertical-align: top
+        width: 210px
+        margin-right: 20px
+        +tablet-landscape-and-below
+          width: 100%
+          margin: 0 0 30px 0
+      article
+        display: inline-block
+        width: calc(100% - 233px)
+        vertical-align: top
+        +tablet-landscape-and-below
+          width: 100%
+        .product-evaluation-rating
+          margin: 0 0 30px 0
+          +tablet-landscape-and-below
+            margin: 0
+
+  &-logo
+    width: 276px
+    height: 276px
+    background-color: white
+    border: 2px solid #3A3EA1
+    position: absolute
+    padding: 30px
+    display: inline-flex
+    align-items: center
+    +tablet-landscape-and-below
+      position: static
+      width: 170px
+      height: 170px
+    +mobile-portrait-only
+      display: flex
+  &-description
+    font-size: 1.3rem
+    font-weight: 500
+    letter-spacing: -0.03rem
+
+
+// Cadastro de novo produto
+.new-product-input-year
+  width: 50% !important
+
+.new-product
+  .categories-item-title
+    margin-top: 40px
+  textarea
+    height: 120px
+  .title-highlight
+    margin-top: 40px
+  &-tip
+    height: 140px
+    margin-top: 33px
+    padding: 27px 0
+    +tablet-landscape-and-below
+      margin-top: 3px
+      margin-bottom: 10px
+      height: auto
+      padding: 0
+    &:before
+      content: "i"
+      font-family: "b2b"
+      font-size: 42px
+      float: left
+      padding: 0 10px 25px 10px
+      color: $color-primary
+    h4
+      margin: 0
+      color: $color-primary
+      font-size: 1.2rem
+    p
+      font-size: .9rem
+      margin: 0
+  &-country
+    width: 278px
+    +tablet-landscape-and-below
+      width: 100%
+
+  &-agreement
+    display: inline-block
+    text-align: left
+    .link
+      color: white
+      text-decoration: underline
+      font-weight: 600
+    .button
+      background-color: orange
+      color: white
+      width: 100%
+      text-align: center
+      margin-top: 20px
+    .checkbox:checked + .label:before,
+    .checkbox:hover + .label:before,
+    .checkbox:focus + .label:before
+      color: white
+
+  &.banner-image
+    height: 420px
+    width: 100%
+    background-color: $color-primary
+    +tablet-landscape-and-below
+      height: auto
+    .container
+      background-image: image-url('celular.png')
+      background-repeat: no-repeat
+      background-position: 0px -7px
+      padding: 4rem 0 9rem 0
+      +tablet-landscape-and-below
+        background: none
+        padding: 0 15px 20px 15px
+
+.new-product
+  .categories-featured-title
+    margin-bottom: 0
+
+.product-small-logo
+  display: inline-flex
+  align-items: center
+  width: 52px
+  height: 52px
+  border: 1px solid $color-primary
+  img
+    padding: 8px

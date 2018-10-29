@@ -1,0 +1,54 @@
+<section class="section-with-aside product-evaluation">
+  <h2>Avalie o <%= @product.nome %></h2>
+  <p>Nossos usuários levam, em média, 5 minutos para o preencher uma avaliação.</p>
+
+  <div class="product-evaluation-terms">
+    <strong>Termos para avaliação</strong>
+    <ul>
+      <li>não sou um colaborador/sócio da solução avaliada</li>
+      <li>não trabalho em um concorrente direto desta solução</li>
+      <li>mesmo recebendo algum incentivo, confirmo que isto não influenciou minha avaliação</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <%= form_for @assessment, url: create_avaliacao_path(url: @product.custom_name), method: (@assessment.persisted? ? :patch : :post) do |f| %>
+    <%= hidden_field_tag :landing, params[:controller] == 'landing_pages' %>
+    <% index = 0 %>
+    <% star_rating = 0 %>
+
+    <%= f.fields_for :questionario_respostas do |builder| %>
+      <% if index == 1 %>
+        <div class="step step-<%= index + 1%>">
+          <h3 class="step-title"><%= builder.object.questionario_pergunta.pergunta.split(':').first.gsub('{SOFTWARE}', @product.nome) %></h3>
+          <small class="step-info"><%= builder.object.questionario_pergunta.pergunta.split(':')[1].gsub('{SOFTWARE}', @product.nome) %></small>
+      <% elsif index == 6 %>
+        <div class="step step-3">
+          <h3 class="step-title">Quais suas impressões?</h3>
+      <% elsif index == 11 %>
+        <div class="step step-6">
+          <h3 class="step-title"><%= builder.object.questionario_pergunta.pergunta.gsub('{SOFTWARE}', @product.nome) %></h3>
+      <% elsif index == 12 %>
+        <div class="step step-7">
+          <h3 class="step-title"><%= builder.object.questionario_pergunta.pergunta.gsub('{SOFTWARE}', @product.nome) %></h3>
+      <% elsif index == 13 %>
+        <div class="product-evaluation-agreement">
+      <% end %>
+
+      <%= builder.hidden_field :questionario_pergunta_id, value: builder.object.questionario_pergunta_id %>
+      <%= render "assessments/#{builder.object.questionario_pergunta.tipo_resposta.underscore}", builder: builder, answer: builder.object, product: @product, index: index, star_rating: star_rating %>
+
+      <% if [5,8, 11, 12, 15].include?(index) %>
+        </div>
+      <% end %>
+      <% index += 1%>
+    <% end %>
+
+    <div class="text-center">
+      <button class="button primary">Enviar avaliação da solução</button>
+    </div>
+  </div>
+
+  <% end %>
+</section>

@@ -1,0 +1,284 @@
+<section class="new-product">
+  <%= form_for product do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="title-highlight">Sobre a Solução</h4>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :nome, 'Nome da Solução', class: 'label' %>
+              <%= f.text_field :nome, class: 'form-control search_prod_name letraNumeroOnly', minlength: 3, required: true %>
+              <div class="prodCheck"></div>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :image_icon, 'Logo da Solução', class: "label-inline label" %>
+              <small>Imagem deve ser quadrada e ter no máximo 500x500px</small>
+              <div class="input-file">
+                <%= content_tag :input, nil, id: 'uploadFile', disabled: true, class: "input #{product.errors[:product_image].any? ? 'error' : nil}", value: product.product_image.url %>
+                <div class="input-file input-file-button">
+                  <span>selecionar arquivo</span>
+                  <%= f.file_field :product_image, accept: 'image/*', required: !product.product_image.present?, id: "uploadBtn", class: "upload" %>
+                </div>
+                <span class="error"><%= product.errors[:product_image].join(', ') %></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :url, 'URL - Endereço web da solução', class: "label-inline label" %>
+              <small>Coloque a URL direta para a página do produto e não para sua Empresa.</small>
+              <%= f.text_field :url, class: 'form-control', required: true, placeholder: 'https://' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :tipo, 'O que melhor descreve sua solução:', class: 'label' %>
+              <%= f.radio_button :tipo, '1', required: true, class: 'checkbox' %>
+              <%= f.label :tipo_1, 'Software', class: 'label' %>
+              <%= f.radio_button :tipo, '2', class: 'checkbox' %>
+              <%= f.label :tipo_2, 'Provedor de Serviços', class: 'label' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :descricao, 'Descrição da Solução', class: "label-inline label" %>
+              <small>mínimo de 40 caracteres</small>
+              <%= f.text_area :descricao, rows: 5, minlength: 40, required: true %>
+            </div>
+            <div class="col-md-4">
+              <div class="new-product-tip">
+                <h4>Dica para sua descrição</h4>
+                <p>Descreva como sua solução agrega valor no dia-a-dia, atributos principais do produto, e o que a diferencia no mercado.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :ideal_profile, 'Perfil Ideal', class: "label-inline label" %>
+              <small>mínimo de 40 caracteres</small>
+              <%= f.text_area :ideal_profile, rows: 5, minlength: 40, required: true %>
+            </div>
+            <div class="col-md-4">
+              <div class="new-product-tip">
+                <h4>Dica para o perfil ideal</h4>
+                <p>Descreva o(s) tipo(s) de profissional(is) ou equipe(s) que mais se beneficiam com a sua solução. Ex: equipes de vendas B2B com mais de 3 vendedores, e buscando organizar seus contatos e pipeline de vendas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <%= f.label :initial_price, 'Preço inicial', class: 'label' %>
+                  <div class="input-prepend">
+                    <%= f.number_field :initial_price, class: 'form-control', required: true %>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                  <div class="styled-select">
+                    <label class="label">&nbsp;</label>
+                    <div class="select">
+                      <%= f.select :price_kind, @price_kinds, { include_blank: 'Selecione' }, { class: 'form-control', required: true } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.label :trial_kind, 'Teste gratuito da Solução', class: 'label' %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.radio_button :trial_kind, '0', required: true, class: 'radio' %>
+                  <%= f.label :trial_kind_0, 'Acesso por tempo limitado', class: 'label' %>
+                  <br>
+                  <%= f.radio_button :trial_kind, '1', class: 'radio' %>
+                  <%= f.label :trial_kind_1, 'Versão gratuita', class: 'label' %>
+                  <br>
+                  <%= f.radio_button :trial_kind, '4', class: 'radio' %>
+                  <%= f.label :trial_kind_4, 'Outro', class: 'label' %>
+                  <small>máximo de 40 caracteres</small>
+                  <br>
+                  <%= f.text_field :trial_other_text, class: 'form-control', disabled: true, maxlength: 40 %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.radio_button :trial_kind, '2', class: 'radio' %>
+                  <%= f.label :trial_kind_2, 'PoC - Proof of concept', class: 'label' %>
+                  <br>
+                  <%= f.radio_button :trial_kind, '3', class: 'radio' %>
+                  <%= f.label :trial_kind_3, 'Não possui', class: 'label' %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <label class="label">Quais as plataformas em que o usuário pode acessar sua solução?</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.check_box :access_web_navigation, class: 'checkbox' %>
+                  <%= f.label :access_web_navigation, 'Navegador Web', class: 'label' %>
+                  <br>
+                  <%= f.check_box :access_mobile_ios, class: 'checkbox' %>
+                  <%= f.label :access_mobile_ios, 'Mobile - iOS', class: 'label' %>
+                  <br>
+                  <%= f.check_box :access_mobile_android, class: 'checkbox' %>
+                  <%= f.label :access_mobile_android, 'Mobile - Android', class: 'label' %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.check_box :access_desktop_pc, class: 'checkbox' %>
+                  <%= f.label :access_desktop_pc, 'Desktop - PC', class: 'label' %>
+                  <br>
+                  <%= f.check_box :access_desktop_apple, class: 'checkbox' %>
+                  <%= f.label :access_desktop_apple, 'Desktop - Apple', class: 'label' %>
+                  <br>
+                  <%= f.check_box :access_desktop_linux, class: 'checkbox' %>
+                  <%= f.label :access_desktop_linux, 'Desktop - Linux', class: 'label' %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="title-highlight">Sobre suporte e treinamento</h4>
+
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :support_hour_kind, 'Quais os horários de suporte?', class: 'label' %>
+
+              <%= f.radio_button :support_hour_kind, '0', required: true, class: 'radio' %>
+              <%= f.label :support_hour_kind_0, 'Horário Comercial', class: 'label' %>
+              <br>
+              <%= f.radio_button :support_hour_kind, '1', class: 'radio' %>
+              <%= f.label :support_hour_kind_1, '24/7', class: 'label' %>
+            </div>
+            <div class="col-md-4">
+              <label class="label">Quais os formatos de suporte oferecidos para sua solução?</label>
+
+              <%= f.check_box :support_email, class: 'checkbox' %>
+              <%= f.label :support_email, 'E-mail', class: 'label' %>
+              <br>
+              <%= f.check_box :support_chat, class: 'checkbox' %>
+              <%= f.label :support_chat, 'Chat', class: 'label' %>
+              <br>
+              <%= f.check_box :support_phone, class: 'checkbox' %>
+              <%= f.label :support_phone, 'Telefone', class: 'label' %>
+            </div>
+            <div class="col-md-4">
+              <label class="label">Quais os formatos fornecidos de treinamento para sua solução?</label>
+
+              <%= f.check_box :training_video, class: 'checkbox' %>
+              <%= f.label :training_video, 'Vídeo Aula', class: 'label' %>
+              <br>
+              <%= f.check_box :training_text, class: 'checkbox' %>
+              <%= f.label :training_text, 'Textos Online', class: 'label' %>
+              <br>
+              <%= f.check_box :training_presential, class: 'checkbox' %>
+              <%= f.label :training_presential, 'Presencial', class: 'label' %>
+              <br>
+              <%= f.check_box :training_ebook, class: 'checkbox' %>
+              <%= f.label :training_ebook, 'e-Books', class: 'label' %>
+            </div>
+          </div>
+
+          <h4 class="title-highlight">Sobre o Fabricante</h4>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :fab_nome, 'Nome do fabricante', class: "label-inline label" %>
+              <small>Fabricante e produto podem ter nome e website igual. Porém em muitos casos podem ser diferentes.</small>
+              <%= f.text_field :fab_nome, class: 'form-control' %>
+            </div>
+            <div class="col-md-6">
+              <div class="styled-select">
+                <%= f.label :country_id, 'País de origem', class: 'label' %>
+                <div class="select new-product-country">
+                  <%= f.select :country_id, @countries, { include_blank: 'Selecione' }, { class: 'form-control', required: true } %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :fab_url, 'URL - Endereço web do fabricante', class: 'label' %>
+              <%= f.text_field :fab_url, class: 'form-control', placeholder: 'https://' %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :start_year, 'Ano da Fundação', class: 'label' %>
+              <%= f.number_field :start_year, class: 'new-product-input-year', required: true, minlength: 4, maxlength: 4 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="new-product-agreement">
+              <% if product.new_record? %>
+                <%= check_box_tag :adm, nil, nil, class: 'checkbox' %>
+                <%= label_tag :adm, 'Eu trabalho nesta empresa e quero ser o administrador.', class: 'label' %>
+                <br />
+                <%= f.check_box :terms_and_conditions, required: true, class: 'checkbox' %>
+                <%= f.label :terms_and_conditions, class: 'label' do %>
+                  Li e concordo com os <%= link_to 'Termos de Uso', '#', class: 'link' %>
+                <% end %>
+                <br />
+              <% end %>
+
+              <% if product.new_record? %>
+                <%= f.submit 'Enviar pedido de Cadastro', class: "button" %>
+              <% else %>
+                <%= f.submit 'Atualizar dados', class: "button" %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</section>
+
+<script type="text/javascript">
+  $(function() {
+    // Para exibir o path do arquivo no input file
+    document.getElementById("uploadBtn").onchange = function () {
+      document.getElementById("uploadFile").value = this.value;
+    };
+
+    $('input[name*="trial_kind"]').on('change', function() {
+      if($('#produto_trial_kind_4').prop("checked")) {
+        $("#produto_trial_other_text").removeAttr('disabled');
+      } else {
+        $("#produto_trial_other_text").prop('disabled', true);
+        $("#produto_trial_other_text").val('');
+      }
+    });
+  });
+</script>
+
+<style type="text/css">
+  label.error{color: red;}
+
+  .tooltip-inner {
+    max-width: 320px;
+  }
+
+  .validate-errors{
+    width: 1px;
+    height: 1px;
+    display: none;
+  }
+</style>

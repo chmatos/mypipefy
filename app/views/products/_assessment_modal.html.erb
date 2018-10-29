@@ -1,0 +1,19 @@
+<div class="modal" id="modal-assessment">
+  <div class="modal-container alert">
+    <a class="boxclose" onclick="$('#modal-assessment').fadeOut();"> <img src="<%= image_path("cancel.svg")%>" /> </a>
+    <i class="icon-alert"></i>
+    <h2>Atenção!</h2>
+    <p>
+      Você já avaliou este produto, Agradecemos sua participação.
+    </p>
+  </div>
+</div>
+
+<script>
+const assessmentModal = document.getElementById('modal-assessment');
+window.onclick = event => {
+  if (event.target == assessmentModal) {
+    $('#modal-assessment').fadeOut();
+  }
+}
+</script>

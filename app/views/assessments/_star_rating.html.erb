@@ -1,0 +1,10 @@
+<div class="rating-star">
+  <label class="step-label"><%= answer.questionario_pergunta.pergunta.gsub('{SOFTWARE}', @product.nome) %></label>
+  <fieldset class="stars">
+    <% (1..5).to_a.reverse.each do |number| %>
+      <%= builder.radio_button :resposta, number, required: (answer.questionario_pergunta.required? && number == 1) %>
+      <%= builder.label "resposta_#{number}", class: 'full' do %>
+      <% end %>
+    <% end %>
+  </fieldset>
+</div>

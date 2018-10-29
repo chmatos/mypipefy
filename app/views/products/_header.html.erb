@@ -1,0 +1,44 @@
+<header class="product-header">
+  <div class="container">
+    <div class="product-logo">
+      <%= image_tag @product.thumb_product_image %>
+    </div>
+
+    <div class="product-header-title">
+      <h5 class="product-header-category-name">
+        <%= @product.main_category&.nome %>
+        <% if @product.secondary_category %>
+        / <%= @product.secondary_category.nome %>
+        <% end%>
+      </h5>
+      <h2 class="product-header-name">
+       <%= @product.nome %>
+      </h2>
+    </div>
+    <!--
+    <div class="awards product-header-highlights">
+      <ul>
+        <li class="awards-item product-header-highlights-item icon-comment">
+          <strong>Mais avaliado</strong> no B2B Stack
+        </li>
+        <li class="awards-item product-header-highlights-item icon-badge">
+          <strong>Melhor avaliado</strong> Outbound Marketing
+        </li>
+      </ul>
+    </div>
+    -->
+  </div>
+</header>
+
+<% if product_manager_helper?(product: @product, user: current_user) %>
+  <div class="container">
+    <ul class="product-owner-options">
+      <%= content_tag :li, class: "option-item #{params[:action] == 'show' ? 'active' : nil }" do %>
+        <%= link_to 'Avaliações', produto_path(url: @product.custom_name) %>
+      <% end %>
+      <%= content_tag :li, class: "option-item #{params[:action] == 'edit' ? 'active' : nil }" do %>
+        <%= link_to 'Editar Informações', edit_products_path(url: @product.custom_name) %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,316 @@
+.input,
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="number"],
+textarea
+  display: inline-block
+  border-radius: .3em
+  border: 1px solid #000
+  padding: 10px 20px
+  width: 100%
+  height: 45px
+  color: #333333
+  &.error
+    background-color: #ffdddd
+
+.label
+  font-weight: 600
+  margin: 20px 0 8px 0
+  display: inline-block
+  font-size: 1.1rem
+  display: block
+  &.label-inline
+    display: inline-block
+
+label[id*="-error"]
+  display: none !important
+
+.input-search
+  position: relative
+  &:before
+    content: "\f002"
+    font-family: "FontAwesome"
+    position: absolute
+    top: 0
+    right: 0
+    background-color: #333333
+    padding: 5px 10px
+    border-radius: 5px
+    margin: 4px
+  .search-result
+    position: absolute
+    width: 100%
+    background-color: white
+    color: #333333
+    border-radius: 5px
+    margin-top: 5px
+    z-index: 10
+    .search-item,
+    .search-group
+      padding: 10px 20px
+      text-align: left
+      border-bottom: 1px solid #cccccc
+      border-right: 1px solid #cccccc
+      border-left: 1px solid #cccccc
+      &:first-child
+        border-radius: 5px 5px 0 0
+        border-top: 1px solid #cccccc
+    .search-group
+      font-size: 1.2rem
+      font-weight: 400
+      background-color: #f7f7f7
+    .search-item
+      font-weight: 400
+      img
+        display: inline-block
+        width: 35px
+        height: 35px
+        margin-right: 10px
+      &:last-child
+        border-radius: 0 0 5px 5px
+      &:hover
+        cursor: pointer
+        color: $color-primary
+
+.input-file
+  position: relative
+  &-button
+    position: absolute
+    overflow: hidden
+    margin: 5px
+    display: inline-block
+    padding: 7px 15px
+    background-color: #333333
+    border-radius: 5px
+    color: white
+    font-weight: 400
+    top: 0
+    right: 0
+    cursor: pointer
+
+.input-file input.upload
+  position: absolute
+  top: 0
+  right: 0
+  margin: 0
+  padding: 0
+  font-size: 20px
+  cursor: pointer
+  opacity: 0
+  filter: alpha(opacity=0)
+  &.error
+    background-color: red
+
+
+.input-prepend
+  input
+    width: calc(100% - 48px)
+    border-left-color: white
+    border-radius: 0 5px 5px 0
+    vertical-align: middle
+    margin-left: -3px
+  &:before
+    content: "R$"
+    font-family: 'Dosis', sans-serif
+    text-align: center
+    height: 45px
+    width: 45px
+    padding: 12px 5px
+    display: inline-block
+    vertical-align: middle
+    background-color: #cccccc
+    border-radius: 5px 0 0 5px
+    border-left: 1px solid #333333
+    border-bottom: 1px solid #333333
+    border-top: 1px solid #333333
+
+
+.button
+  display: inline-block
+  padding: 15px
+  border: 1px solid $color-primary
+  font-size: 1.3rem
+  text-align: center
+  letter-spacing: -0.03rem
+  &:hover,
+  &:focus
+    text-decoration: none
+  &.primary
+    color: white
+    background-color: $color-primary
+  &.secondary
+    color: $color-primary
+  &[class*="icon-"]:before
+    vertical-align: bottom
+    font-size: 24px
+    margin-right: 7px
+
+.pagination li
+  display: inline-block
+  a
+    padding: 5px 10px
+    background-color: #f7f7f7
+    font-size: .9rem
+    color: #777777
+    &:hover
+      background-color: darken(#f7f7f7, 10)
+      text-decoration: none
+  &:first-child a,
+  &:last-child a
+    background-color: white
+    font-size: 1rem
+
+
+// SELECT
+
+.select select
+  background: transparent
+  width: 268px
+  padding: 3px 20px 0 20px
+  font-size: 18px
+  line-height: 1
+  border: 0
+  border-radius: 0
+  height: 34px
+  -webkit-appearance: none
+  &.error
+    background-color: #ffdddd
+    height: 42px
+    width: 100%
+  +tablet-landscape-and-below
+    width: auto
+
+.select
+  width: 240px
+  height: 45px
+  overflow: hidden
+  border: 1px solid #333333
+  display: inline-block
+  position: relative
+  border-radius: 5px
+  +tablet-landscape-and-below
+    width: 100%
+  &:after
+    content: "\f107"
+    font-family: "FontAwesome"
+    position: absolute
+    top: 0
+    right: 0
+    font-size: 2rem
+    margin: 2px 18px
+
+.styled-select
+  width: 240px
+  +tablet-landscape-and-below
+    width: 100%
+  label
+    display: block
+    text-align: left
+
+// RADIO AND CHECKBOX
+.radio,
+.checkbox
+  position: absolute
+  z-index: -1000
+  width: 1
+  height: 1
+  margin: -1px
+  padding: 0
+  border: 0
+  line-height: -1px
+  overflow: hidden
+  opacity: 0
+  display: inline-block
+  clip: rect(0 0 0 0)
+
+.radio + .label,
+.checkbox + .label
+  text-align: left
+  min-height: 16px
+  margin: 5px 5px 0 5px
+  display: inline-block
+  cursor: pointer
+  font-weight: 400
+  &:before
+    font-family: "b2b"
+    color: black
+    vertical-align: sub
+    margin-right: 12px
+    font-size: 25px
+    font-weight: normal
+
+
+.radio[disabled] + .label,
+.radio[disabled] + .label:hover,
+.radio[disabled]:checked + .label,
+.radio[disabled] + .label:before,
+.radio[disabled] + .label:hover:before,
+.radio[disabled]:checked + .label:before,
+.checkbox[disabled] + .label,
+.checkbox[disabled] + .label:hover,
+.checkbox[disabled]:checked + .label,
+.checkbox[disabled] + .label:before,
+.checkbox[disabled] + .label:hover:before,
+.checkbox[disabled]:checked + .label:before
+  cursor: default
+  opacity: 0.7
+
+.radio.error + .label:before,
+.radio.error + .label:hover:before,
+.radio.error:checked + .label:before,
+.radio.error:focus + .label:before,
+.checkbox.error + .label:before,
+.checkbox.error + .label:hover:before,
+.checkbox.error:checked + .label:before,
+.checkbox.error:focus + .label:before
+  color: red
+
+
+// RADIO
+.radio + .label:before
+  content: "r"
+
+.radio + .label:hover:before,
+.radio + .label:focus:before,
+.radio:focus + .label:before
+  color: black
+
+.radio:checked:focus + .label:before,
+.radio:checked + .label:before
+  content: "q"
+  color: black
+
+.radio[disabled] + .label:before,
+.radio[disabled] + .label:hover:before
+  color: #CCCCCC
+
+.radio[disabled]:checked + .label:before,
+.radio[disabled]:checked + .label:hover:before
+  color: #CCCCCC
+
+
+// CHECKBOX
+.checkbox + .label:before
+  content: "p"
+
+.checkbox + .label:hover:before,
+.checkbox + .label:focus:before,
+.checkbox:focus + .label:before
+  color: black
+
+.checkbox:checked:focus + .label:before,
+.checkbox:checked + .label:before
+  content: "o"
+  color: black
+
+.checkbox[disabled] + .label:before,
+.checkbox[disabled] + .label:hover:before
+  color: #CCCCCC
+
+.checkbox[disabled]:checked + .label:before,
+.checkbox[disabled]:checked + .label:hover:before
+  color: #CCCCCC
+
+.error
+  color: red

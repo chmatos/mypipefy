@@ -1,0 +1,22 @@
+// PRODUCTS LIST
+
+
+
+.products-list
+  +tablet-landscape-and-below
+    text-align: center
+  &-item
+    display: inline-block
+    padding: 5px
+    a
+      display: inline-flex
+      vertical-align: middle
+      width: 115px
+      height: 85px
+      border: 1px solid #cccccc
+      border-radius: 10px
+      align-items: center
+  &.per-line-3 .products-list-item:nth-child(3n)
+    padding-right: 0
+  &.per-line-6 .products-list-item:nth-child(6n)
+    padding-right: 0

@@ -1,0 +1,28 @@
+<% if !current_user
+     session[:return_url] = current_url %>
+
+  <div class="modal text-center" id="modal-signup-success">
+    <div class="modal-container">
+      <a class="boxclose" onclick="$('#modal-signup-success').fadeOut();"> <img src="<%= image_path("cancel.svg")%>" /> </a>
+      <i class="icon-success"></i>
+      <h2>Cadastro realizado com sucesso!</h2>
+
+      <strong>Agora você pode</strong>
+
+      <ul class="row modal-signup-success-options">
+        <li class="col-md-4"><a href="#">Avaliar uma solução</a></li>
+        <li class="col-md-4"><a href="#">Cadastrar uma solução</a></li>
+        <li class="col-md-4"><a href="#">Ir para a página inicial</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const signupModal = document.getElementById('modal-signup-success');
+    window.onclick = event => {
+      if (event.target == signupModal) {
+        $('#modal-signup-success').fadeOut();
+      }
+    }
+  </script>
+<% end %>

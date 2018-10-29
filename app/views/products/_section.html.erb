@@ -1,0 +1,188 @@
+<section class="section-with-aside product-evaluation">
+  <% if @product.approved_assessments.any? %>
+    <header class="product-evaluation-header">
+      <ul class="product-evaluation-rating">
+        <li class="product-evaluation-rating-item">
+          <h3>
+            Recomendaria
+          </h3>
+          <p class="strong">
+            <%= @product.average_note_recommendation %>
+          </p>
+          <!--
+          <strong class="seal icon-badge">
+            Maior em outbound!
+          </strong>
+          -->
+        </li>
+
+        <li class="product-evaluation-rating-item">
+          <h3>
+            Facilidade de Uso
+            <span class="tooltip">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span class="tooltip-text">
+                Simples de configurar, um usuário com poucos conhecimentos consegue trabalhar na ferramenta.
+              </span>
+            </span>
+          </h3>
+          <p>
+            <%= @product.average_note_ease_use %>
+          </p>
+          <!--
+          <strong class="seal icon-badge">
+            Maior em outbound!
+          </strong>
+          -->
+        </li>
+
+        <li class="product-evaluation-rating-item">
+          <h3>
+            Suporte ao Cliente
+            <span class="tooltip">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span class="tooltip-text">
+                Cordialidade no atendimento, tempo de resposta do suporte, tempo de solução.
+              </span>
+            </span>
+          </h3>
+          <p>
+            <%= @product.average_note_client_support %>
+          </p>
+          <!--
+          <strong class="seal icon-badge">
+            Maior em outbound!
+          </strong>
+          -->
+        </li>
+
+        <li class="product-evaluation-rating-item">
+          <h3>
+            Custo Benefício
+            <span class="tooltip">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span class="tooltip-text">
+                Obteve retorno sob o investimento.
+              </span>
+            </span>
+          </h3>
+          <p>
+            <%= @product.average_note_cost_benefit %>
+          </p>
+          <!--
+          <strong class="seal icon-badge">
+            Maior em outbound!
+          </strong>
+          -->
+        </li>
+
+        <li class="product-evaluation-rating-item">
+          <h3>
+            Funcionalidades
+            <span class="tooltip">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span class="tooltip-text">
+                Integração com diversos softwares de mercado, atende todas demandas do seu negócio.
+              </span>
+            </span>
+          </h3>
+          <p>
+            <%= @product.average_note_functionality %>
+          </p>
+          <!--
+          <strong class="seal icon-badge">
+            Maior em outbound!
+          </strong>
+          -->
+        </li>
+      </ul>
+
+      <div>
+        <div class="col">
+          <h3 class="title-h3">Avaliações da <%= @product.nome %></h3>
+          <!--
+          <ul class="pagination">
+            <li><a href="#"> < </a></li>
+            <li><a href="#"> 1 </a></li>
+            <li><a href="#"> 2 </a></li>
+            <li><a href="#"> 3 </a></li>
+            <li><a href="#"> 4 </a></li>
+            <li><a href="#"> 5 </a></li>
+            <li><a href="#"> > </a></li>
+          </ul>
+          -->
+        </div>
+        <div class="col text-right">
+          <!--
+          <div class="styled-select right">
+            <label for="#">ordenar por</label>
+            <div class="select">
+              <select name="#" id="#">
+                <option value="#">Score B2B</option>
+              </select>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+
+    </header>
+  <% else %>
+    <%= render "section_no_assesment", product: @product, main_category: @main_category  %>
+  <% end %>
+  <ol class="product-evaluation-list">
+    <% @assessments.each do |avaliacao| %>
+      <li class="product-evaluation-item <%= current_user ? '' : 'signout' %>" ondragstart="return false;" onselectstart="return false;"  oncontextmenu="return false;">
+        <% next if avaliacao.questionario_respostas.blank? %>
+
+        <aside>
+          <img src="<%= image_path avaliacao.oauth_account_image_url %>" class="product-evaluation-account-avatar" onerror="this.src='<%= image_path('fallback-img.png') %>'">
+          <span class="product-evaluation-account">
+            <h4 class="product-evaluation-account-name"><%= avaliacao.oauth_account_name %></h4>
+            <p class="product-evaluation-account-description"><%= raw(avaliacao.oauth_account_headline) %></p>
+            <small class="product-evaluation-date"><b>avaliação enviada</b> <br> <%= l(avaliacao.created_at, format: :short_date) %></small>
+            <!--
+            <strong class="seal icon-badge">
+              Avaliação mais favorável
+            </strong>
+            -->
+          </span>
+        </aside>
+        <article>
+
+          <ul class="product-evaluation-rating">
+            <% avaliacao.questionario_respostas.approved.rated_questions.each do |answer| %>
+              <li class="product-evaluation-rating-item">
+                <h3>
+                  <%= answer.questionario_pergunta.custom_question %>
+                </h3>
+                <%= content_tag :p, class: (answer.questionario_pergunta.custom_question == 'recomendaria' ? 'strong' : nil) do %>
+                  <%= answer.custom_answer %>
+                <% end %>
+              </li>
+            <% end%>
+          </ul>
+
+          <br>
+          <% avaliacao.questionario_respostas.approved.text_questions.each do |answer| %>
+              <strong class="product-evaluation-question"><%= answer.questionario_pergunta.pergunta.gsub('{SOFTWARE}', @product.nome).gsub(/^3 [a-z]. /, '') %></strong>
+              <p class="product-evaluation-answer"><%= answer.resposta %></p>
+          <% end %>
+        </article>
+
+        <!-- Modal quando usuário não está logado -->
+        <dialog class="modal-static">
+          <p>Conecte-se com sua conta do Linkedin para mais análises</p>
+          <a href="/auth/linkedin" class="linkedin-button">
+            <div class="linkedin-logo">
+              <img src="https://png.icons8.com/ios/24/ffffff/linkedin-2-filled.png">
+              <div class="slide"></div>
+            </div>
+            <span class="linkedin-link">Entre com sua conta Linkedin</span>
+          </a>
+        </dialog>
+
+      </li>
+    <% end %>
+  </ol>
+</section>

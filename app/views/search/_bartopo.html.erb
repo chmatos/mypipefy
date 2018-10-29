@@ -1,0 +1,15 @@
+<% unless params[:controller] == 'home' %>
+    <div id="li-search" class="input-search" role="search">
+      <div id="ig-search" class="input-group" style="width:100%;">
+        <input
+          class="form-control"
+          id="search_input"
+          name="search_input"
+          placeholder="Busque no B2B Stack"
+          autocomplete="off"
+          autofocus="autofocus" type="text"
+        >
+      </div>
+      <ul id="result_search" class="search-result"></ul>
+    </div>
+<% end %>

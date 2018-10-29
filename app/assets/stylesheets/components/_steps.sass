@@ -1,0 +1,47 @@
+// STEPS
+
+
+
+$step-evaluation: 1, 2, 3, 4, 5, 6, 7
+
+
+.step
+  position: relative
+  width: calc(100% - 60px)
+  float: right
+  padding-bottom: 50px
+  &-title
+    font-weight: 300
+    font-size: 2.1rem
+    margin-bottom: 20px
+    +tablet-landscape-and-below
+      font-size: 1.3rem
+  &-info
+    margin-top: -20px
+    margin-bottom: 15px
+    display: block
+  &:before
+    display: inline-block
+    width: 40px
+    height: 40px
+    background-color: #333333
+    color: white
+    font-weight: 600
+    padding: 0px 14px
+    font-size: 2.1rem
+    border-radius: 5px
+    position: absolute
+    top: 0
+    left: 0
+    margin-left: -50px
+  &-label
+    display: inline-block
+    font-weight: 300
+    font-size: 1.2rem
+    margin: 10px 0
+    &.label-inline
+      margin-right: 7px
+
+@each $step-number in $step-evaluation
+  .step-#{$step-number}:before
+    content: "#{$step-number}"

@@ -1,0 +1,19 @@
+<header class="product-header">
+  <div class="container">
+    <div class="product-logo">
+      <%= image_tag @product.thumb_product_image %>
+    </div>
+
+    <div class="product-header-title">
+      <h5 class="product-header-category-name">
+        <%= @product.main_category&.nome %>
+        <% if @product.secondary_category %>
+        / <%= @product.secondary_category.nome %>
+        <% end%>
+      </h5>
+      <h2 class="product-header-name">
+       <%= @product.nome %>
+      </h2>
+    </div>
+  </div>
+</header>

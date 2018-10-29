@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-7">
+    <h4>Esta solução ainda não possui avaliações</h4>
+
+    <% if current_user %>
+      <div>
+        <h2>Clique <%= link_to 'aqui', new_avalicacao_path(@product.custom_name) %> e seja o primeiro a avaliar o <%= product.nome %></h2>
+      </div>
+      <br/>
+    <% else %>
+      <h2>Seja o primeiro a avaliar o <%= product.nome %></h2>
+      <p>Conecte-se com sua conta Linkedin para avaliar a solução!</p>
+
+      <a href="/auth/linkedin" class="product-evaluation linkedin-button">
+        <div class="linkedin-logo">
+          <img src="https://png.icons8.com/ios/24/ffffff/linkedin-2-filled.png">
+          <div class="slide"></div>
+        </div>
+        <span class="linkedin-link">Entre com sua conta Linkedin</span>
+      </a>
+     <% end %>
+
+    <% if main_category %>
+      <h3 class="title-highlight">Outras soluções de <%= main_category.nome %></h3>
+      <br>
+      <div>
+        <% @main_category_featured_products.each do |product| %>
+          <%= link_to(image_tag(product.thumb_product_image, size:"115x85", class: 'product-image'), produto_path(product.custom_name), class: 'categories-product') %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

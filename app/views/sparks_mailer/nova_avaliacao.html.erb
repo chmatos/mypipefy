@@ -1,0 +1,59 @@
+<!DOCTYPE !DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <style>
+	      ol.dot { list-style-type: lower-roman }
+	      ol.number { list-style-type: decimal }
+	      ul.dot { list-style: outside }
+		 .tab{ padding-left:15px;}
+    	</style>
+  	</head>
+	<body>
+    <p>Oi <%=h @firstName%>,</p>
+		<p>Muito obrigado!</p>
+		<p>Recebemos sua avaliação para o Software: <%=h @produto.nome%></p>
+		<p>Nossa equipe de curadoria fará a análise e entraremos em contato muito em breve.</p>
+		<p>Continue nos ajudando a tornar o processo de compra de Softwares B2B cada vez melhor.</p>
+		<p><a href="<%= categorias_url %>" target="_blank">Deixar uma avaliação</a></p>
+		<p>Abraços,</p>
+		<br />
+		<table style="width: 389px;">
+			<tbody>
+				<tr style="height: 94px;">
+					<td style="width: 179px; height: 94px; text-align: center;">
+						<span class="isAlink" style="text-decoration: underline;">
+							<a href="http://www.b2bstack.net" target="_blank" rel="noopener noreferrer">
+								<img src="http://sys-pipz.b2bstack.net/shared/1234/files/b2bstack_logo_oficial.png" width="140" height="null" style="max-width: 100%;" />
+							</a>
+						</span>
+					</td>
+					<td style="width: 232px; height: 94px;">
+						<p>Eduardo Müller<br />CEO<br />
+							<span class="isAlink" style="text-decoration: underline;">
+								<a href="mailto:eduardo@b2bstack.net" target="_blank" rel="noopener noreferrer">eduardo@b2bstack.net</a>
+							</span>
+							<br />(48) 9157-8808
+							<br />LinkedIN:
+								<span class="isAlink" style="text-decoration: underline;">
+									<a href="https://www.linkedin.com/in/eduardosmuller/" target="_blank" rel="noopener noreferrer">eduardosmuller</a>
+								</span>
+						</p>
+						<p>
+							<a href="https://www.linkedin.com/company-beta/22286928" target="">
+								<img src="http://sys-pipz.b2bstack.net/shared/1234/files/linkedin.png" width="16" height="16" style="max-width: 100%;" />
+							</a>&nbsp;
+							<a href="https://www.facebook.com/B2BStack/" target="null">
+								<img src="http://sys-pipz.b2bstack.net/shared/1234/files/facebook.png" width="16" height="16" style="max-width: 100%;" />
+							</a>&nbsp;
+							<a href="https://www.youtube.com/channel/UCOEBD5A8IkuaNjX_hc5GQMA" target="null">
+								<img src="http://sys-pipz.b2bstack.net/shared/1234/files/youtube.png" width="16" height="16" style="max-width: 100%;" />
+							</a>
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+  	</body>
+</html>

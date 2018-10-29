@@ -1,0 +1,22 @@
+<div class="modal fade" id="loginmodal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content no-radius">
+      		<div class="modal-header txt-center bg-default">
+        		<h2 class="modal-title" id="myModalLabel">
+    	   			<button  type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+            		<img src="<%= image_path("logo.png")%>"/>
+        		</h2>
+      		</div>
+      		<div class="modal-body login-modal txt-center">
+      			<div class="clearfix"><br></div>
+      			<div id='social-icons-conatainer'>
+      				<a href="/auth/linkedin" class="btn-linkedin">Sign In with Linkedin <img src="<%= image_path("linkedin.svg")%>" /></a>
+	        	</div>																												
+	        	<div class="clearfix"><br></div>
+      		</div>
+    	</div>
+  	</div>
+</div>
+<script>
+  $('#loginmodal2').modal('show');
+</script>

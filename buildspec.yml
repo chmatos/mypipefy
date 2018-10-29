@@ -1,0 +1,41 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - AWS_KEY=AKIAJUZJW467FDHW47RA
+      - AWS_SEC=sDQPXNn9zrq/OvE580rXqrWWNxvEObgg8B0SPTpJ
+      - AWS_REG=us-east-1
+      - AWS_OUT=json
+      - AWS_PROF=user_builder
+      - printf "${AWS_KEY}\n${AWS_SEC}\n${AWS_REG}\n${AWS_OUT}\n" | aws configure --profile ${AWS_PROF}
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email --profile $AWS_PROF)
+      - git config --global credential.helper '!aws --profile ${AWS_PROF} codecommit credential-helper $@'
+      - git config --global credential.UseHttpPath true
+      - REPOSITORY_URI=414846394997.dkr.ecr.us-east-1.amazonaws.com/b2b-build-portal
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - CURRENT_DIR=$(pwd)
+  build:
+    commands:
+      - aws configure set s3.signature_version s3v4
+      - aws s3 sync s3://b2bstack-portal/ ~/.ssh/ --region us-east-1 && chmod 400 ~/.ssh/id_rsa
+      - apt-get update && apt-get install openssh-client -y
+      - git clone -b $BRANCH git@github.com:b2bstack/portal.git /b2bstack
+      - cd /b2bstack
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - cd $CURRENT_DIR
+      - printf '[{"name":"B2BSTACK","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+      files: imagedefinitions.json

@@ -1,0 +1,58 @@
+// BANNERS
+
+
+
+
+// Usada no banner da página de adicionar novo produto
+.banner-title
+  font-size: 3rem
+  font-weight: 300
+  color: white
+  +tablet-landscape-and-below
+    font-size: 2rem
+.banner-subtitle
+  color: white
+  font-size: 1.5rem
+  letter-spacing: -0.01rem
+  font-weight: 400
+.banner-p
+  margin: 0
+
+.banner-image-alert
+  display: inline-block
+  padding: 10px
+  background-color: rgba(255,255,255,0.2)
+  color: white
+  margin-top: 40px
+  width: 450px
+  +tablet-landscape-and-below
+    width: 100%
+    max-width: 355px
+    display: block
+    margin: 0 auto
+  &:before
+    content: "a"
+    font-family: "b2b"
+    font-size: 50px
+    float: left
+    padding: 6px 17px 6px 8px
+    line-height: 4rem
+    +tablet-landscape-and-below
+      font-size: 30px
+      padding: 4px 15px 0px 8px
+      line-height: 2rem
+  h4
+    font-size: .9rem
+  ul
+    font-size: .9rem
+    +tablet-landscape-and-below
+      margin-top: 10px
+
+.banner-footer
+  background-color: $color-primary
+  color: white
+  padding: 35px 0
+  text-align: center
+  margin-top: 3.5rem
+  input[type="checkbox"] + label:before
+    color: white
