@@ -1,0 +1,6 @@
+.env.*
+coverage/
+log/
+node_modules/
+public/uploads/
+tmp/cache/
