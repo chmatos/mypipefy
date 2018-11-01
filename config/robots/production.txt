@@ -1,2 +1,2 @@
-Sitemap: https://b2bstack.com.br/sitemap.xml
+Sitemap: https://www.b2bstack.com.br/sitemap.xml
 Agent: *
