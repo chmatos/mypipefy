@@ -11,8 +11,8 @@ class SearchController < ApplicationController
   def index
     @result = []
     keyword_slug = params[:q]
-    keyword = keyword_slug.tr('-', ' ')
-    if keyword
+    if keyword_slug.strip.present?
+      keyword = keyword_slug.tr('-', ' ')
       unless keyword.empty?
         keyword = keyword.downcase
         @categ = Categoria
