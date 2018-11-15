@@ -14,3 +14,5 @@ app/.DS_Store
 *.dump
 dump.rdb
 *.todo
+public/packs/
+yarn.lock
