@@ -21,8 +21,7 @@ module ReviewsCore
 
     config.assets.precompile += %w( .svg .eot .woff .ttf .sass .scss)
 
-    # TODO: enable this
-    # config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
