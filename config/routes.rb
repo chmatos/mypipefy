@@ -42,6 +42,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # Routes for API
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :ranking
+    end
+  end
+
   get '/sitemap', to: 'sitemap#index', as: :sitemap
 
   mount_roboto

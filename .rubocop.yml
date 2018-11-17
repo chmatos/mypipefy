@@ -1,0 +1,11 @@
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 320
+
+AllCops:
+  TargetRubyVersion: 2.4
+
+Metrics/MethodLength:
+  Max: 205
