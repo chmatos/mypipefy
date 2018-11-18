@@ -38,4 +38,24 @@ class ProductDecorator < ApplicationDecorator
   def average_note_functionality
     (questionario_respostas.approved.rated_questions.functionality_question.sum(:resposta).to_f / questionario_respostas.approved.rated_questions.functionality_question.count).round(1)
   end
+
+  def average_all_notes
+    if count_reviews.zero?
+      0.00
+    else
+      ((average_note_recommendation +
+        average_note_ease_use +
+        average_note_client_support +
+        average_note_cost_benefit +
+        average_note_functionality) / 5).round(2) || 0.00
+    end
+  end
+
+  def count_reviews
+    ((questionario_respostas.approved.rated_questions.recommendation_question.count +
+      questionario_respostas.approved.rated_questions.ease_use_question.count +
+      questionario_respostas.approved.rated_questions.client_support_question.count +
+      questionario_respostas.approved.rated_questions.cost_benefit_question.count +
+      questionario_respostas.approved.rated_questions.functionality_question.count) / 5).round(2) || 0.00
+  end
 end

@@ -17,46 +17,27 @@ class RankingService
   def category(category_id: nil)
     category_id ||= @category_id
     category = Categoria.find_by(id: category_id)
-    return [] unless category.present?
+    return [] if category.blank?
 
-    products_array = []
     products = ProductDecorator.decorate_collection(category.produtos.active)
-    products.each do |product|
-      products_array << product_json(product)
-    end
-    products_array
+    products.map { |product| product_json(product) }
   end
 
   def product(product_id: nil)
     product_id ||= @product_id
     product = Produto.find_by(id: product_id)
-    return {} unless product.present?
+    return {} if product.blank?
 
     product = ProductDecorator.decorate(product)
     product_json(product)
   end
 
   def product_json(product)
-    coordenada_y = ((product.questionario_respostas.approved.rated_questions.recommendation_question.count +
-                     product.questionario_respostas.approved.rated_questions.ease_use_question.count +
-                     product.questionario_respostas.approved.rated_questions.client_support_question.count +
-                     product.questionario_respostas.approved.rated_questions.cost_benefit_question.count +
-                     product.questionario_respostas.approved.rated_questions.functionality_question.count) / 5).round(2) || 0.00
-
-    coordenada_x = if coordenada_y.zero?
-                     0.00
-                   else
-                     ((product.average_note_recommendation +
-                       product.average_note_ease_use +
-                       product.average_note_client_support +
-                       product.average_note_cost_benefit +
-                       product.average_note_functionality) / 5).round(2) || 0.00
-                   end
     {
       product_id: product.id,
       nome: product.nome,
-      coordenadaX: coordenada_x,
-      coordenadaY: coordenada_y,
+      coordenadaX: product.average_all_notes,
+      coordenadaY: product.count_reviews,
       imagePath: product.small_product_image
     }
   end
