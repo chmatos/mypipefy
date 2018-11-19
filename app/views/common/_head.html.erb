@@ -45,7 +45,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
 
   <meta name="description" content="Seu portal de conhecimento em tecnologias B2B"/>
-  <link rel="canonical" href="https://www.b2bstack.com.br/"/>
+  <link rel="canonical" href="<%= request.url.split("?").first %>"/>
   <meta property="og:locale" content="pt_BR"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="B2B Stack - Seu portal de conhecimento em tecnologias B2B"/>
