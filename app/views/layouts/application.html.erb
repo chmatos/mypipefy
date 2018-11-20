@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
   <%= render 'common/head' %>
+  <%= javascript_include_tag 'application' %>
 
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -28,7 +29,5 @@
     <%= render 'common/login_modal' %>
     <%= render 'common/sign_up_success_modal' %>
     <%= render 'common/forgot_password_modal' %>
-
-    <%= javascript_include_tag 'application' %>
   </body>
 </html>
