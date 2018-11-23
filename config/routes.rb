@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   # Routes for API
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :ranking
+      resources :rankings, only: [ :index, :show ]
     end
   end
 

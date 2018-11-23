@@ -5,11 +5,10 @@ class Api::BaseController < ActionController::Base
 
   def authenticate_application(_app_nome = 'cliente')
     authenticate_or_request_with_http_token do |token, _options|
-      unless token == ENV['TOKEN_API']
-        render status: :unauthorized, json: { erro: 'APP Invalido' }
-        return false
-      end
-      return true
+      return true if token == ENV['TOKEN_API']
+
+      render status: :unauthorized, json: { erro: 'APP Invalido' }
+      return false
     end
   end
 
@@ -18,6 +17,7 @@ class Api::BaseController < ActionController::Base
       puts "api response: [#{args[0][:status]}]"
       puts JSON.pretty_generate(args[0][:json])
     end
+
     render *args, &blk
   end
 end
