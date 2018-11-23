@@ -20,6 +20,3 @@ RSpec.describe Api::V1::RankingsController, type: :controller do
   end
 end
 
-def authenticated_header
-  { 'Authorization': "Bearer test" }
-end
