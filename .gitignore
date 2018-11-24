@@ -16,3 +16,5 @@ dump.rdb
 *.todo
 public/packs/
 yarn.lock
+.doc
+.vscode/
