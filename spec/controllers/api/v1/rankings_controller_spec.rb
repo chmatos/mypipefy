@@ -25,9 +25,9 @@ RSpec.describe Api::V1::RankingsController, type: :controller do
         expect(response.body).to eq(
           {
             product_id: product.id,
-            nome: product.nome,
-            coordenadaX: 0.0,
-            coordenadaY: 0.0,
+            name: product.nome,
+            coordinateX: 0.0,
+            coordinateY: 0,
             imagePath: "/uploads/small_logo.png"
           }.to_json
         )
@@ -39,7 +39,7 @@ RSpec.describe Api::V1::RankingsController, type: :controller do
     context "no id passed" do
       it "returns an empty hash" do
         get :index, params: { category_id: "" }
-        expect(response.body).to eq({ error_msg: 'category_id required' }.to_json)
+        expect(response.body).to eq({ error: 'category_id required' }.to_json)
       end
     end
 
@@ -58,16 +58,16 @@ RSpec.describe Api::V1::RankingsController, type: :controller do
           [
             {
               product_id: product_01.id,
-              nome: 'Product 01 Name',
-              coordenadaX: 0.0,
-              coordenadaY: 0.0,
+              name: 'Product 01 Name',
+              coordinateX: 0.0,
+              coordinateY: 0,
               imagePath: "/uploads/small_logo.png"
             },
             {
               product_id: product_02.id,
-              nome: 'Product 02 Name',
-              coordenadaX: 0.0,
-              coordenadaY: 0.0,
+              name: 'Product 02 Name',
+              coordinateX: 0.0,
+              coordinateY: 0,
               imagePath: "/uploads/small_logo.png"
             }
           ].to_json

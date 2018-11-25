@@ -20,6 +20,6 @@ class Api::V1::RankingsController < Api::BaseController
   private
 
   def validate_category
-    api_render status: :bad_request, json: { error_msg: 'category_id required' } if params[:category_id].blank?
+    api_render status: :bad_request, json: { error: 'category_id required' } if params[:category_id].blank?
   end
 end

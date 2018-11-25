@@ -2,7 +2,7 @@
 
 class RankingService
   def initialize(product_id: nil, category_id: nil)
-    @product_id = product_id
+    @product_id  = product_id
     @category_id = category_id
   end
 
@@ -24,11 +24,11 @@ class RankingService
 
   def product_json(product)
     {
-      product_id: product.id,
-      nome: product.nome,
-      coordenadaX: product.average_all_notes,
-      coordenadaY: product.count_reviews,
-      imagePath: product.small_product_image
+      product_id:  product.id,
+      name:        product.nome,
+      coordinateX: product.average_all_notes,
+      coordinateY: product.count_reviews,
+      imagePath:   product.small_product_image
     }
   end
 end
