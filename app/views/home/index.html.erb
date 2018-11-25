@@ -38,10 +38,10 @@
             </div>
             <div class="home-assessments-account">
               <%= image_tag (answer.avaliacao.oauth_account.image_url || '/assets/fallback-img.png'), class: 'product-evaluation-account-avatar', onerror: "this.src='/assets/fallback-img.png'" %>
-              <span class="product-evaluation-account">
+              <div class="product-evaluation-account">
                 <h4 class="product-evaluation-account-name"><%= answer.avaliacao.oauth_account.name %></h4>
                 <p class="product-evaluation-account-description"><%= answer.avaliacao.oauth_account.headline %></p>
-              </span>
+              </div>
             </div>
           </div>
         </div>
