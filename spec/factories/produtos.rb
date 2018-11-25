@@ -18,7 +18,7 @@ FactoryBot.define do
 
     trait :with_assessments do
       after(:create) do |instance|
-        create_list(:questionario_produto, 1, produto: instance)
+      create_list(:questionario_produto, 1, produto: instance)
       end
     end
   end
